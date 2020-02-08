@@ -1,0 +1,3 @@
+c:\Repositories\HFU\Text Adventure\obj\Debug\netcoreapp3.1\Text Adventure.csprojAssemblyReference.cache
+c:\Repositories\HFU\Text Adventure\obj\Debug\netcoreapp3.1\Text Adventure.AssemblyInfoInputs.cache
+c:\Repositories\HFU\Text Adventure\obj\Debug\netcoreapp3.1\Text Adventure.AssemblyInfo.cs
