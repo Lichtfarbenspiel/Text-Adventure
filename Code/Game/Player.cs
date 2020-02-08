@@ -19,6 +19,7 @@ class Player : Character{
     public override void Attack(){
         Write("How would you like to Attack? >");
         string attack = Console.ReadLine();
+        
     }
      
     public override void Interact(){
