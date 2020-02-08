@@ -3,20 +3,29 @@ using System.Collections.Generic;
 using static System.Console;
 
 public class Character{
-   string name;
-   int lives = 3;
-   Inventory inv;
+   public string name;
+   public int lives = 3;
+   public int location;
+   public Inventory inv;
+   
+
    
    
-   public Character(string name, int lives, Inventory inv)
+   public Character(string name, int lives, int location, Inventory inv)
    {
       this.name = name;
       this.lives = lives;
+      this.location = location;
       this.inv = inv;
    }
 
-   public virtual void Attack(){
-      WriteLine("Attack!");
+   public virtual void Description(){
+      WriteLine("Hi, this is me!");
+   }
+
+   public virtual Character Attack(Character c){
+      c.lives -= 1;
+      return c;
    }
 
    public virtual void TakeItem(Item item){

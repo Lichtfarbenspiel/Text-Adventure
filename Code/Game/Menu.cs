@@ -12,4 +12,20 @@ class Menu{
         }
     }
 
+    void Save(Game game){
+
+    }
+
+    void load(Game game){
+
+    }
+
+    void resume(){
+        // look aufrufen?
+    }
+
+    void quit(){
+        Environment.Exit(0);
+    }
+
 }

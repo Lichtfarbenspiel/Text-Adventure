@@ -11,4 +11,5 @@ class Game
         this.rooms = rooms;
         this.player = player;
     }
+    
 }

@@ -4,31 +4,49 @@ using static System.Console;
 
 class Opponent : Character
 {
-    string name;
-    int lives = 3;
-    Inventory inv;
-    bool befriend;
-    List<String> attacks;
+    public string description; 
+    public bool befriend;
     List<String> interactions;
 
-    public Opponent(string name, int lives, Inventory inv, bool befriend, List<String> interactions, List<String> attacks) : base(name, lives, inv)
+    public Opponent(string name, int lives, int location, Inventory inv, string description, bool befriend, List<String> interactions) : base(name, lives, location, inv)
     {
-        this.name = name;
+        this.name = name;          
         this.lives = lives;
+        this.location = location;
         this.inv = inv;
         this.befriend = befriend;
         this.interactions = interactions;
-        this.attacks = attacks;
+        this.description = description;
     }
 
-    public override void Attack(){
-        Random rnd = new Random();
-      
-        int r = rnd.Next(attacks.Count);
+    public override Character Attack(Character player){
+        double damageMax;
+        double damageMin;
 
-        if(lives > 0){
-            WriteLine(attacks[r]);
+        Random r = new Random();
+
+        if(this.lives >= 3){
+            damageMax = 0.6f;
+            damageMin = 0.4f;
+
+            double damage = r.NextDouble() * (damageMin - damageMax) + damageMin;
+            player.lives -= (int)(lives * damage);
         }
+        if(this.lives == 2){
+            damageMax = 0.4f;
+            damageMin = 0.2f;
+
+            double damage = r.NextDouble() * (damageMin - damageMax) + damageMin;
+            player.lives -= (int)(lives * damage);
+        }
+        if(this.lives == 1){
+            damageMax = 0.2f;
+            damageMin = 0.0f;
+
+            double damage = r.NextDouble() * (damageMin - damageMax) + damageMin;
+            player.lives -= (int)(lives * damage);
+        }
+        return player;
     }
 
 

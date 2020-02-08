@@ -1,7 +1,7 @@
 using System;
 
 public class Item{
-    string name;
+    public string name;
     string type;
     // int id;
 
