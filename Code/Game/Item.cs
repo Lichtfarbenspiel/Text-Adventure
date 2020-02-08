@@ -1,14 +1,14 @@
 using System;
 
 public class Item{
-    string n;
-    string t;
-    int id;
+    string name;
+    string type;
+    // int id;
 
     public Item(String name, String type)
     {
-        name = n;
-        type = t;
+        this.name = name;
+        this.type = type;
     }
 
     // items of the same type can be combined?

@@ -10,7 +10,7 @@ using System.Threading;
 class JsonConverter{
 
 
-    // public string DeserialiseJson<T>(String FilePath){
+    // public string DeserialiseJson<T>(String FilePath, T Type){
 
     //     List<T> list = new List<T>();
     //     using(StreamReader r = new System.IO.StreamReader(FilePath)){
@@ -24,7 +24,7 @@ class JsonConverter{
     //     return list;
     // }
 
-    public string SerialiseJson<T>(string jsonPath, T element)
+    public string SerialiseJson<T>(string jsonPath, T Type)
     {
 
         List<T> list = new List<T>();
@@ -32,7 +32,7 @@ class JsonConverter{
             string json = r.ReadToEnd();
             list = JsonConvert.DeserializeObject<List<T>>(json);
         }
-        list.Add(element);
+        list.Add(Type);
         WriteLine(list);
         return JsonConvert.SerializeObject(list);
     }

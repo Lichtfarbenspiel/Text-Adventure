@@ -5,14 +5,20 @@ using static System.Console;
 class Player : Character{
     string name;
     int lives;
-    static List<Item> items;
-    Inventory inv = new Inventory(items);
-
+    Inventory inv;
     Dictionary<string, char> commands = new Dictionary<string, char>();
 
+    public Player(string name, int lives, Inventory inv, Dictionary<string, char> commands) : base(name, lives, inv)
+    {
+        this.name = name;
+        this.lives = lives;
+        this.inv = inv;
+        this.commands = commands;
+    }
 
-    public override String Attack(){
-        return "attack!";
+    public override void Attack(){
+        Write("How would you like to Attack? >");
+        string attack = Console.ReadLine();
     }
      
     public override void Interact(){

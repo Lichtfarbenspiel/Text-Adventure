@@ -4,12 +4,22 @@ using static System.Console;
 
 class Room{
 
-    string name;
-    List<Item> itemsInRoom;
-    List<Character> characters;
+    String name;
     String description;
     Door door;
+    List<Item> itemsInRoom;
+    List<Character> characters;
     List<Char> directions = new List<char>();
+
+    public Room(String name, String description, Door door, List<Item> itemsInRoom, List<Character> characters, List<Char> directions)
+    {
+        this.name = name;
+        this.description = description;
+        this.door = door;
+        this.itemsInRoom = itemsInRoom;
+        this.characters = characters;
+        this.directions = directions;
+    }
 
     void Display(){
         WriteLine(description);
