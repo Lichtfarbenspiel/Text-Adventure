@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Repositories\\HFU\\Text Adventure\\Text Adventure.csproj": {}
+    "C:\\Repositories\\HFU\\Text-Adventure\\Text Adventure.csproj": {}
   },
   "projects": {
-    "C:\\Repositories\\HFU\\Text Adventure\\Text Adventure.csproj": {
+    "C:\\Repositories\\HFU\\Text-Adventure\\Text Adventure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Repositories\\HFU\\Text Adventure\\Text Adventure.csproj",
+        "projectUniqueName": "C:\\Repositories\\HFU\\Text-Adventure\\Text Adventure.csproj",
         "projectName": "Text Adventure",
-        "projectPath": "C:\\Repositories\\HFU\\Text Adventure\\Text Adventure.csproj",
+        "projectPath": "C:\\Repositories\\HFU\\Text-Adventure\\Text Adventure.csproj",
         "packagesPath": "C:\\Users\\emola\\.nuget\\packages\\",
-        "outputPath": "C:\\Repositories\\HFU\\Text Adventure\\obj\\",
+        "outputPath": "C:\\Repositories\\HFU\\Text-Adventure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -38,6 +38,12 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "(, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
