@@ -7,7 +7,7 @@ public class Character{
    public int lives = 3;
    public int location;
    public Inventory inv;
-   public bool isAlive = true;
+   public bool isAlive;
 
     public Character(string name, int lives, int location, Inventory inv)
    {

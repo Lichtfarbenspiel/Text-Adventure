@@ -5,7 +5,7 @@ using static System.Console;
 
 class Player : Character{
     Dictionary<string, char> commands = new Dictionary<string, char>();
-    public bool isAlive = true;
+    public new bool isAlive = true;
 
     public Player(string name, int lives, int location, Inventory inv, Dictionary<string, char> commands) : base(name, lives, location, inv)
     {

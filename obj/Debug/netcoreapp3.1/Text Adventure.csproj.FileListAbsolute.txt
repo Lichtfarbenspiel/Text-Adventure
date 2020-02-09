@@ -1,3 +1,16 @@
 c:\Repositories\HFU\Text Adventure\obj\Debug\netcoreapp3.1\Text Adventure.csprojAssemblyReference.cache
 c:\Repositories\HFU\Text Adventure\obj\Debug\netcoreapp3.1\Text Adventure.AssemblyInfoInputs.cache
 c:\Repositories\HFU\Text Adventure\obj\Debug\netcoreapp3.1\Text Adventure.AssemblyInfo.cs
+c:\Repositories\HFU\Text-Adventure\bin\Debug\netcoreapp3.1\Text Adventure.exe
+C:\Repositories\HFU\Text-Adventure\bin\Debug\netcoreapp3.1\Text Adventure.deps.json
+C:\Repositories\HFU\Text-Adventure\bin\Debug\netcoreapp3.1\Text Adventure.runtimeconfig.json
+C:\Repositories\HFU\Text-Adventure\bin\Debug\netcoreapp3.1\Text Adventure.runtimeconfig.dev.json
+c:\Repositories\HFU\Text-Adventure\bin\Debug\netcoreapp3.1\Text Adventure.dll
+c:\Repositories\HFU\Text-Adventure\bin\Debug\netcoreapp3.1\Text Adventure.pdb
+c:\Repositories\HFU\Text-Adventure\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+c:\Repositories\HFU\Text-Adventure\obj\Debug\netcoreapp3.1\Text Adventure.csprojAssemblyReference.cache
+c:\Repositories\HFU\Text-Adventure\obj\Debug\netcoreapp3.1\Text Adventure.AssemblyInfoInputs.cache
+c:\Repositories\HFU\Text-Adventure\obj\Debug\netcoreapp3.1\Text Adventure.AssemblyInfo.cs
+C:\Repositories\HFU\Text-Adventure\obj\Debug\netcoreapp3.1\Text Adventure.csproj.CopyComplete
+c:\Repositories\HFU\Text-Adventure\obj\Debug\netcoreapp3.1\Text Adventure.dll
+c:\Repositories\HFU\Text-Adventure\obj\Debug\netcoreapp3.1\Text Adventure.pdb

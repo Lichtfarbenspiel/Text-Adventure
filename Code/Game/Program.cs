@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using Newtonsoft.Json;
 using static System.Console;
 
 namespace Text_Adventure
@@ -14,21 +16,39 @@ namespace Text_Adventure
         Item thisItem;
         Door thisDoor;
         String wrongCommand = "Unknown command, please try Again!";
+        bool win = false;
+        string FilePath = "json/Game.json";
         
        
 
         static void Main(string[] args)
         {
             Program p = new Program();
-            p.LoadGame();
+
+            p.game = p.LoadGame();
+            WriteLine("check");
             p.StartGame(p.game);
         }
 
         Game LoadGame(){
-            JsonConverter jc = new JsonConverter();
-            game = jc.DeserialiseJson("json/Game.json");
-            return game;
+            string jsonString = File.ReadAllText(FilePath);
+            WriteLine(jsonString);
+            Game g = JsonConvert.DeserializeObject<Game>(jsonString);
+            return g;
         }
+
+        void Save(Game game){
+
+        }
+
+        void Resume(){
+            currentRoom.Display();
+        }
+
+        void Quit(){
+            Environment.Exit(0);
+        }
+
 
         void StartGame(Game g){
             Console.Clear();
@@ -52,53 +72,62 @@ namespace Text_Adventure
         }
         
         void PlayGame(){
-            Console.Clear();
-            
-            currentRoom.Display();
-            WriteLine("\n");
-            Write("Make a move! >");
-            string userInput = Console.ReadLine().ToLower();
-            string[] input = userInput.Split(" ");
-            List<Character> opponents = currentRoom.characters;
-
-            switch(input[0]){
-                case "m": 
-                    menu.Display(); 
-                    break;
-                case "c": 
-                    game.player.ShowCommands(); 
-                    break;
-                case "l":
-                    currentRoom.Display(); 
-                    break;
-                case "i": 
-                    game.player.inv.Display(); 
-                    break;
+            while(!win && player.isAlive){
+                Console.Clear();
                 
-                case "take": 
-                    PickItem(input[1]);
-                    break;
-                case "drop": 
-                    LeaveItem(input[1]); 
-                    break;
+                currentRoom.Display();
+                WriteLine("\n");
+                Write("Make a move! >");
+                string userInput = Console.ReadLine().ToLower();
+                string[] input = userInput.Split(" ", 2);
+                List<Character> opponents = currentRoom.characters;
 
-                case "f":
-                    Fight(input[1]);
-                    break;
+                switch(input[0]){
+                    case "0":
+                    case "q":
+                        Quit();
+                        break;
+                    case "1":
+                        Save(game);
+                        break;
+                    case "2":
+                        Resume();
+                        break;
+                    case "m": 
+                        menu.Display(); 
+                        break;
+                    case "c": 
+                        game.player.ShowCommands(); 
+                        break;
+                    case "l":
+                        currentRoom.Display(); 
+                        break;
+                    case "i": 
+                        game.player.inv.Display(); 
+                        break;
+                    
+                    case "take": 
+                        PickItem(input[1]);
+                        break;
+                    case "drop": 
+                        LeaveItem(input[1]); 
+                        break;
 
-                case "w":  
-                case "a": 
-                case "s": 
-                case "d": 
-                    Move(input[0]);
-                    break;
-                default: 
-                    WriteLine(wrongCommand);
-                    break;
+                    case "f":
+                        Fight(input[1]);
+                        break;
 
+                    case "w":  
+                    case "a": 
+                    case "s": 
+                    case "d": 
+                        Move(input[0]);
+                        break;
+                    default: 
+                        WriteLine(wrongCommand);
+                        break;
+                }
             }
-
-
         }
         void PickItem(String input){
             int amount = currentRoom.itemsInRoom.Count;
