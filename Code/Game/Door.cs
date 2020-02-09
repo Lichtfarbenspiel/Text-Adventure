@@ -14,11 +14,12 @@ class Door{
 
     
 
-    public Door(List<QuizElement> riddles, bool locked, String direction)
+    public Door(List<QuizElement> riddles, bool locked, String direction, String leadsTowards)
     {
         this.riddles = riddles;
         this.locked = locked;
-        this.direction = direction; 
+        this.direction = direction;
+        this.leadsTowards = leadsTowards;
     }
 
     public bool Riddle(){

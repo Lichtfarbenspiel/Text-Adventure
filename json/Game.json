@@ -1,0 +1,254 @@
+{
+    "game":{
+        "rooms":[
+            {
+                "name": "outside",
+                "description": "",
+                "position": 0,
+                "doors":[
+                    {
+                        "riddles":[
+                            {
+                                "question": "where can you go whithout accually being there?",
+                                "answer":{
+                                    "text": "dream",
+                                    "isTrue": true
+                                }
+                            }
+                        ], 
+                        "locked": true,
+                        "direction": "w",
+                        "leadsTowards": "entrance"
+                    }
+                ],
+                "itemsInRoom":[
+                        {
+                            "name": "club",
+                            "usage": "fight" 
+                        }, 
+                        {
+                            "name": "ball", 
+                            "usage": "befriend"
+                        }
+                ],
+                "characters":[
+                    {
+                        "name": "amera",
+                        "lives": 3,
+                        "location": 0,
+                        "inv":{
+                            "itemsList":[
+                                {
+                                   "name": "potion",
+                                   "usage": "health",
+                                   "power": 0
+                            
+                                }
+                            ]
+                        },
+                        "befirend": true,
+                        "description": "A large black wolf-like creature, that moves in the shadows."
+                    }
+                ]
+            },
+            {
+                "name": "entrance",
+                "description": "",
+                "position": 1,
+                "doors":[
+                    {
+                        "riddles":[], 
+                        "locked": false,
+                        "direction": "s",
+                        "leadsTowards": "outside"
+                    }, 
+                    {
+                        "riddles":[
+                            {
+                                "question": "What has many keys, but can't even open a single door?",
+                                "answer":{
+                                    "text": "piano",
+                                    "isTrue": true
+                                }
+                            }
+                        ], 
+                        "locked": true,
+                        "direction": "a",
+                        "leadsTowards": "dining hall"
+                    }, 
+                    {
+                        "riddles":[
+                            {
+                                "question": "What is more useful when it is broken?",
+                                "answer":{
+                                    "text": "egg",
+                                    "isTrue": true
+                                } 
+                            }
+                        ], 
+                        "locked": true,
+                        "direction": "d",
+                        "leadsTowards": "kitchen"
+                    }, 
+                    {
+                        "riddles":[], 
+                        "locked": false,
+                        "direction": "w",
+                        "leadsTowards": "upstairs"
+                    }
+                ],
+                "itemsInRoom":[
+                        {
+                            "name": "sword",
+                            "usage": "fight",
+                            "power": 2
+                        }, 
+                        {
+                            "name": "pipe", 
+                            "usage": "smoke",
+                            "power": 0
+                        },
+                        {
+                            "name": "gemstone", 
+                            "usage": "tiara",
+                            "power": 0
+                        }
+                ],
+                "characters":[]
+            },
+            {
+                "name": "dining hall",
+                "description": "",
+                "position": 2,
+                "doors":[
+                    {
+                        "riddles":[], 
+                        "locked": false,
+                        "direction": "d",
+                        "leadsTowards": "entrance"
+                    }
+                ],
+                "itemsInRoom":[
+                        {
+                            "name": "gemstone",
+                            "usage": "tiara",
+                            "power": 0
+                        }
+                ],
+                "characters":[]
+            },
+            {
+                "name": "kitchen",
+                "description": "",
+                "position": 3,
+                "doors":[
+                    {
+                        "riddles":[], 
+                        "locked": false,
+                        "direction": "a",
+                        "leadsTowards": "entrance"
+                    }
+                ],
+                "itemsInRoom":[
+                        {
+                            "name": "gemstone",
+                            "usage": "tiara",
+                            "power": 0
+                        }
+                ],
+                "characters":[]
+            },
+            {
+                "name": "upstairs",
+                "description": "",
+                "position": 4,
+                "doors":[
+                    {
+                        "riddles":[
+                            
+                        ], 
+                        "locked": false,
+                        "direction": "w",
+                        "leadsTowards": "entrance"
+                    }
+                ],
+                "itemsInRoom":[],
+                "characters":[
+                    {
+                        "name": "sudagog",
+                        "lives": 4,
+                        "location": 4,
+                        "inv":{
+                            "itemsList":[
+                                {
+                                   "name": "tiara",
+                                   "usage": "win",
+                                   "power": 0
+                                }
+                            ]
+                        },
+                        "befirend": false,
+                        "description": "A strong human looking monster. It has the tiara in its possesion."
+                    }
+                ]
+            }
+        ],
+        "player":{
+            "name": "one",
+            "lives": 3,
+            "location": 0,
+            "inv":{
+                "itemsList":[
+                    {
+                       "name": "matches",
+                       "usage": "fire" 
+                    }, 
+                    {
+                        "name": "ball", 
+                        "usage": "befriend"
+                    }
+                ]
+            },  
+            "commands":[
+                {
+                    "key": "show inventory",
+                    "value":"i"
+                },
+                {
+                    "key": "take item",
+                    "value":"take <item>"
+                },
+                {
+                    "key": "drop item",
+                    "value":"drop <item>"
+                },
+                {
+                    "key": "foreward",
+                    "value":"w"
+                },
+                {
+                    "key": "backward",
+                    "value":"s"
+                },
+                {
+                    "key": "left",
+                    "value":"a"
+                },
+                {
+                    "key": "right",
+                    "value":"d"
+                },
+                {
+                    "key": "look around",
+                    "value":"l"
+                },
+                {
+                    "key": "display menu",
+                    "value":"m"
+                }
+            ]
+        },
+        "instructions": "TO DO"
+    }
+
+}
