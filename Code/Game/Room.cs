@@ -7,12 +7,14 @@ class Room{
     public string name;
     string description;
     int position;
-    List<Door> doors;
+    public List<Door> doors;
     public List<Item> itemsInRoom;
     public List<Character> characters;
-    public List<Char> directions = new List<char>();
+    Room nextRoom;
+    
+    
 
-    public Room(String name, String description, int position, List<Door> doors, List<Item> itemsInRoom, List<Character> characters, List<Char> directions)
+    public Room(String name, String description, int position, List<Door> doors, List<Item> itemsInRoom, List<Character> characters)
     {
         this.name = name;
         this.description = description;
@@ -20,7 +22,6 @@ class Room{
         this.doors = doors;
         this.itemsInRoom = itemsInRoom;
         this.characters = characters;
-        this.directions = directions;
     }
 
     public void Display(){
@@ -41,25 +42,22 @@ class Room{
         }
     }
 
-    // void RemoveItem(Item item){
-    //     Player.inv.AddItem(item);
-    //     itemsInRoom.Remove(item);
-    // }
-
-    // void AddCharacter(Character c){
-    //     characters.Add(c);
-    // }
-
-    // void RemoveCharacter(Character c){
-    //     characters.Remove(c);
-    // }
-    
-    void Enter(Door d){
-        Room nextRoom;
+    public void Enter(Door d, Game game){
+        
         bool riddleSolved = false;
 
+        for(int i = 0; i < game.rooms.Count; i++){
+            if(game.rooms[i].name == d.leadsTowards){
+                nextRoom = game.rooms[i];
+            }
+            else{
+                nextRoom = null;
+                WriteLine("Unknown command, please try Again!");
+                break;
+            }
+        }
+
         if(!d.locked){
-            nextRoom = d.leadsTowards;
             nextRoom.Display();
         }
         else{
@@ -69,7 +67,6 @@ class Room{
                 this.Display();
             }
             else{
-                nextRoom = d.leadsTowards;
                 nextRoom.Display();
             }
         }

@@ -12,6 +12,7 @@ namespace Text_Adventure
         Room currentRoom;
         Character thisOpponent;
         Item thisItem;
+        Door thisDoor;
         String wrongCommand = "Unknown command, please try Again!";
         
        
@@ -86,12 +87,10 @@ namespace Text_Adventure
                     break;
 
                 case "w":  
-                    break;
                 case "a": 
-                    break;
                 case "s": 
-                    break;
                 case "d": 
+                    Move(input[0]);
                     break;
                 default: 
                     WriteLine(wrongCommand);
@@ -159,5 +158,18 @@ namespace Text_Adventure
                 WriteLine("There are no opponents to attack.");
             }
         }
-    }
+
+        void Move(String input){
+            for(int i = 0; i < currentRoom.doors.Count; i ++){
+                thisDoor = currentRoom.doors[i];
+                if(String.Equals(thisDoor.direction, input)){
+                    currentRoom.Enter(thisDoor, game);
+                }
+                else{
+                    WriteLine("You can not go in this direction! Please try again.");
+                }
+            }
+        }
+
+    }   
 }
