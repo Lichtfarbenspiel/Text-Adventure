@@ -9,19 +9,19 @@ class Room{
     int position;
     public List<Door> doors;
     public List<Item> itemsInRoom;
-    public List<Character> characters;
+    public List<Opponent> opponents;
     Room nextRoom;
     
     
 
-    public Room(String name, String description, int position, List<Door> doors, List<Item> itemsInRoom, List<Character> characters)
+    public Room(String name, String description, int position, List<Door> doors, List<Item> itemsInRoom, List<Opponent> opponents)
     {
         this.name = name;
         this.description = description;
         this.position = position;
         this.doors = doors;
         this.itemsInRoom = itemsInRoom;
-        this.characters = characters;
+        this.opponents = opponents;
     }
 
     public void Display(){
@@ -33,9 +33,9 @@ class Room{
                 WriteLine(item.name);
             }
         }
-        if(characters.Count > 0){
+        if(opponents.Count > 0){
             WriteLine("There are ");
-            foreach (Opponent op in characters)
+            foreach (Opponent op in opponents)
             {
                 WriteLine(op.name + op.description);
             }

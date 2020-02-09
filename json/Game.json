@@ -42,7 +42,6 @@
                                    "name": "potion",
                                    "usage": "health",
                                    "power": 0
-                            
                                 }
                             ]
                         },
@@ -210,42 +209,6 @@
                 ]
             },  
             "commands":[
-                {
-                    "key": "show inventory",
-                    "value":"i"
-                },
-                {
-                    "key": "take item",
-                    "value":"take <item>"
-                },
-                {
-                    "key": "drop item",
-                    "value":"drop <item>"
-                },
-                {
-                    "key": "foreward",
-                    "value":"w"
-                },
-                {
-                    "key": "backward",
-                    "value":"s"
-                },
-                {
-                    "key": "left",
-                    "value":"a"
-                },
-                {
-                    "key": "right",
-                    "value":"d"
-                },
-                {
-                    "key": "look around",
-                    "value":"l"
-                },
-                {
-                    "key": "display menu",
-                    "value":"m"
-                }
             ]
         },
         "instructions": "TO DO"
