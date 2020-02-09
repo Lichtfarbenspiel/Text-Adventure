@@ -6,7 +6,7 @@ class Menu{
 
     List<String> instruction = new List<string>();
 
-    void Display(){
+    public void Display(){
         foreach(String s in instruction){
             WriteLine(s);
         }

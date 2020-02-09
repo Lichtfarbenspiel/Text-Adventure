@@ -7,11 +7,9 @@ public class Character{
    public int lives = 3;
    public int location;
    public Inventory inv;
-   
+   public bool isAlive = true;
 
-   
-   
-   public Character(string name, int lives, int location, Inventory inv)
+    public Character(string name, int lives, int location, Inventory inv)
    {
       this.name = name;
       this.lives = lives;

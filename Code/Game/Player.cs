@@ -5,6 +5,7 @@ using static System.Console;
 
 class Player : Character{
     Dictionary<string, char> commands = new Dictionary<string, char>();
+    public bool isAlive = true;
 
     public Player(string name, int lives, int location, Inventory inv, Dictionary<string, char> commands) : base(name, lives, location, inv)
     {
@@ -15,12 +16,26 @@ class Player : Character{
         this.commands = commands;  
     }
     public override void TakeItem(Item item){
-        inv.AddItem(item);
+            inv.AddItem(item); 
+    }
+    public override void DropItem(Item item){
+        if(inv.itemsList.Count > 0){
+            inv.RemoveItem(item);
+        }
+        else{
+            WriteLine("There are no items in your inventory.");
+        }
+    }
+
+    void move(Room r){
 
     }
+
     public override Character Attack(Character opponent){
         double damageMax;
         double damageMin;
+
+        WriteLine("Attacking " + opponent.name + "...");
 
         Random r = new Random();
 
@@ -45,7 +60,15 @@ class Player : Character{
             double damage = r.NextDouble() * (damageMin - damageMax) + damageMin;
             opponent.lives -= (int)(lives * damage);
         }
+        if(opponent.lives == 0){
+            opponent.isAlive = false;
+        }
+        WriteLine("Opponent's lives left: " + this.lives);
         return opponent;
+    }
+
+    public void Move(string direction){
+        
     }
      
     public override void Interact(){

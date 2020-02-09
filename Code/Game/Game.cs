@@ -3,13 +3,15 @@ using System.Collections.Generic;
 
 class Game
 {
-    List<Room> rooms;
-    Player player;
+    public List<Room> rooms;
+    public Player player;
+    public String instructions;
 
-    public Game(List<Room> rooms, Player player)
+    public Game(List<Room> rooms, Player player, String instructions)
     {
         this.rooms = rooms;
         this.player = player;
+        this.instructions = instructions;
     }
     
 }

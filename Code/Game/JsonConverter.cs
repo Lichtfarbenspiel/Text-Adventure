@@ -9,20 +9,12 @@ using System.Threading;
 
 class JsonConverter{
 
+    public Game DeserialiseJson(String FilePath){
 
-    // public string DeserialiseJson<T>(String FilePath, T Type){
-
-    //     List<T> list = new List<T>();
-    //     using(StreamReader r = new System.IO.StreamReader(FilePath)){
-    //         string json = r.ReadToEnd();
-    //         json = JsonConvert.DeserializeObject<List<T>>(json);
-    //     }
-
-    //     foreach(T element in json){
-    //         list.Add(element);
-    //     }
-    //     return list;
-    // }
+        string jsonString = File.ReadAllText(FilePath);
+        Game game = JsonConvert.DeserializeObject<Game>(jsonString);
+        return game;
+    }
 
     public string SerialiseJson<T>(string jsonPath, T Type)
     {

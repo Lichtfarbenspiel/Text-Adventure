@@ -9,8 +9,8 @@ class Room{
     int position;
     List<Door> doors;
     public List<Item> itemsInRoom;
-    List<Character> characters;
-    List<Char> directions = new List<char>();
+    public List<Character> characters;
+    public List<Char> directions = new List<char>();
 
     public Room(String name, String description, int position, List<Door> doors, List<Item> itemsInRoom, List<Character> characters, List<Char> directions)
     {
@@ -23,7 +23,7 @@ class Room{
         this.directions = directions;
     }
 
-    void Display(){
+    public void Display(){
         WriteLine(description);
         if(itemsInRoom.Count > 0){
             WriteLine("You can see ");

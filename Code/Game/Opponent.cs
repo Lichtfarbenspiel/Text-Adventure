@@ -19,9 +19,15 @@ class Opponent : Character
         this.description = description;
     }
 
+    public override void DropItem(Item item){
+        inv.RemoveItem(item);
+    }
+
     public override Character Attack(Character player){
         double damageMax;
         double damageMin;
+
+        WriteLine("You are being attacked by " + this.name + "...");
 
         Random r = new Random();
 
@@ -46,6 +52,10 @@ class Opponent : Character
             double damage = r.NextDouble() * (damageMin - damageMax) + damageMin;
             player.lives -= (int)(lives * damage);
         }
+        if(player.lives == 0){
+            player.isAlive = false;
+        }
+        WriteLine("Lives left: " + player.lives);
         return player;
     }
 

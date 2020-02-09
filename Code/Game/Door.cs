@@ -19,8 +19,6 @@ class Door{
         this.leadsTowards = leadsTowards; 
     }
     public bool Riddle(){
-        string input;
-
         Random rnd = new Random();
         int number  = rnd.Next(0, riddles.Count);
         
