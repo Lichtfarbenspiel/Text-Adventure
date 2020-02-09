@@ -7,6 +7,7 @@ class Opponent : Character
     public string description; 
     public bool befriend;
     List<String> interactions;
+    public bool isAlive = true;
 
     public Opponent(string name, int lives, int location, Inventory inv, string description, bool befriend, List<String> interactions) : base(name, lives, location, inv)
     {

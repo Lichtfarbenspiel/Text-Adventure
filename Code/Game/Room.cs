@@ -27,6 +27,7 @@ class Room{
     public void Display(){
         WriteLine(description);
         if(itemsInRoom.Count > 0){
+            WriteLine("\n");
             WriteLine("You can see ");
             foreach (Item item in itemsInRoom)
             {
@@ -34,10 +35,12 @@ class Room{
             }
         }
         if(opponents.Count > 0){
-            WriteLine("There are ");
+            WriteLine("There are the following Characters:");
+            WriteLine("\n");
             foreach (Opponent op in opponents)
             {
-                WriteLine(op.name + op.description);
+                WriteLine(op.name + " " + op.description);
+                WriteLine("\n");
             }
         }
     }

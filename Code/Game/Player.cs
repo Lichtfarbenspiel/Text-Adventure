@@ -4,16 +4,15 @@ using System.Text;
 using static System.Console;
 
 class Player : Character{
-    Dictionary<string, char> commands = new Dictionary<string, char>();
-    public new bool isAlive = true;
 
-    public Player(string name, int lives, int location, Inventory inv, Dictionary<string, char> commands) : base(name, lives, location, inv)
+    public bool isAlive = true;
+
+    public Player(string name, int lives, int location, Inventory inv) : base(name, lives, location, inv)
     {
         this.name = name;
         this.lives = lives;
         this.location = location;
         this.inv = inv; 
-        this.commands = commands;  
     }
     public override void TakeItem(Item item){
             inv.AddItem(item); 
@@ -76,18 +75,7 @@ class Player : Character{
     }
 
     public void ShowCommands(){
-        StringBuilder sb = new StringBuilder();
-        bool isFirst = true;
-
-        foreach(var x in commands){
-            if(isFirst){
-                sb.Append($"{x.Key} ({x.Value})");
-            }
-            else
-                sb.Append($", {x.Key} ({x.Value})");
-        }
-
-        WriteLine(sb.ToString());
+        WriteLine("commands (c): show Commands \n move forward(w), move backward (s), move left (a), move right (d)\n look (l)\n show inventory (i)\n take (t item) <item>\n drop (d item) <item>\n attack (a name) <character>.\n save (save) game\n quit (q)");
     }
 
 }

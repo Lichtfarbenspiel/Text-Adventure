@@ -9,31 +9,38 @@ namespace Text_Adventure
     class Program
     {
         static Game game;
-        static string FilePath = "json/Game.json";
+        static List<Room> rooms;
+        static Player player;
+        static string PathRooms = "json/Rooms.json";
+        static string PathPlayer = "json/Player.json";
+        static string instructions = "how to play";
+        public bool gameOver = false;
+        public bool won = false;
         
        
-
         static void Main(string[] args)
         {
             Program p = new Program();
 
-            game = LoadGame();
-            WriteLine("check");
-            game.StartGame();
+            LoadGame();
         }
 
-        static Game LoadGame(){
+        static void LoadGame(){
 
-            using (StreamReader r = new StreamReader(FilePath))
+           using (StreamReader r = new StreamReader(PathRooms))
             {
                 string json = r.ReadToEnd();
-                WriteLine(json);
-                game = JsonConvert.DeserializeObject<Game>(json);
+                rooms = JsonConvert.DeserializeObject<List<Room>>(json);
             }
-            // string jsonString = File.ReadAllText(FilePath);
-            // WriteLine(jsonString);
-            // Game g = JsonConvert.DeserializeObject<Game>(jsonString);
-            return game;
+
+            using (StreamReader r = new StreamReader(PathPlayer))
+            {
+                string json = r.ReadToEnd();
+                player = JsonConvert.DeserializeObject<Player>(json);
+            }
+            WriteLine(player);
+            game = new Game(rooms, player, instructions);
+            game.StartGame();
         }
 
         public static void Save(Game game){
@@ -50,4 +57,3 @@ namespace Text_Adventure
         }
     }
 }
-

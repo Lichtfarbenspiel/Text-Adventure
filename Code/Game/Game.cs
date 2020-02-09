@@ -13,7 +13,9 @@ class Game
     Item thisItem;
     Door thisDoor;
     String wrongCommand = "Unknown command, please try Again!";
-    bool win = false;
+    bool gameOver = false;
+    bool won = false;
+        
     
 
     public Game(List<Room> rooms, Player player, String instructions)
@@ -34,7 +36,7 @@ class Game
         if(String.Equals(userInput, "start")){
             WriteLine("Loading...");
             currentRoom = this.rooms[0];
-            System.Threading.Thread.Sleep(5000);
+            System.Threading.Thread.Sleep(1000);
             PlayGame();
         }
         else{
@@ -44,52 +46,49 @@ class Game
     }
 
     public void PlayGame(){
-        Console.Clear();
-        
-        currentRoom.Display();
-        WriteLine("\n");
-        Write("Make a move! >");
-        string userInput = Console.ReadLine().ToLower();
-        string[] input = userInput.Split(" ", 2);
-        List<Opponent> opponents = currentRoom.opponents;
-
-        switch(input[0]){
-            case "m": 
-                menu.Display(); 
-                break;
-            case "c": 
-                player.ShowCommands(); 
-                break;
-            case "l":
-                currentRoom.Display(); 
-                break;
-            case "i": 
-                player.inv.Display(); 
-                break;
+        if(!gameOver && !won){
+            Console.Clear();
             
-            case "take": 
-                PickItem(input[1]);
-                break;
-            case "drop": 
-                LeaveItem(input[1]); 
-                break;
+            currentRoom.Display();
+            WriteLine("\n");
+            WriteLine("Make a move!");
+            Write(">");
+            string userInput = Console.ReadLine().ToLower();
+            string[] input = userInput.Split(" ");
+            List<Opponent> opponents = currentRoom.opponents;
 
-            case "f":
-                Fight(input[1]);
-                break;
-
-            case "w":  
-            case "a": 
-            case "s": 
-            case "d": 
-                Move(input[0]);
-                break;
-            default: 
-                WriteLine(wrongCommand);
-                break;
+            switch(input[0]){
+                case "m": 
+                    menu.Display(); 
+                    break;
+                case "c": 
+                    player.ShowCommands(); 
+                    break;
+                case "l":
+                    currentRoom.Display(); 
+                    break;
+                case "i": 
+                    player.inv.Display(); 
+                    break;
+                case "take": 
+                    this.PickItem(input[1]);
+                    break;
+                case "drop": 
+                    this.LeaveItem(input[1]); 
+                    break;
+                case "f":
+                    this.Fight(input[1]);
+                    break;
+                case "w":  
+                case "a": 
+                case "s": 
+                case "d": 
+                    this.Move(input[0]);
+                    break;
+            }
         }
     }
-    public void PickItem(String input){
+    void PickItem(String input){
         int amount = currentRoom.itemsInRoom.Count;
 
         if(amount > 0){
@@ -112,7 +111,7 @@ class Game
         }
     }
 
-    public void LeaveItem(String input){
+    void LeaveItem(String input){
         int amount = player.inv.itemsList.Count;
 
         for(int i = 0; i < amount; i++){
@@ -130,7 +129,7 @@ class Game
             }
         }  
     }
-    public void Fight(String input){
+    void Fight(String input){
         int amount = currentRoom.opponents.Count;
         if(amount > 0){
             for(int i = 0; i < amount; i ++){
@@ -148,7 +147,7 @@ class Game
         }
     }
 
-    public void Move(String input){
+    void Move(String input){
         for(int i = 0; i < currentRoom.doors.Count; i ++){
             thisDoor = currentRoom.doors[i];
             if(String.Equals(thisDoor.direction, input)){

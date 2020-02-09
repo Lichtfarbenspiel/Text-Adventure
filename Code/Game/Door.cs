@@ -6,7 +6,7 @@ using Quiz;
 
 class Door{
 
-    public List<QuizElement> riddles = new List<QuizElement>();
+    public List<QuizText> riddles = new List<QuizText>();
     public bool locked = true;
     public string direction;
     public String leadsTowards;
@@ -14,7 +14,7 @@ class Door{
 
     
 
-    public Door(List<QuizElement> riddles, bool locked, String direction, String leadsTowards)
+    public Door(List<QuizText> riddles, bool locked, String direction, String leadsTowards)
     {
         this.riddles = riddles;
         this.locked = locked;
