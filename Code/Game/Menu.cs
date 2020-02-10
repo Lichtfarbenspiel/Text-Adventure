@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
+using Newtonsoft.Json;
 using static System.Console;
 
 class Menu{
 
-     public void Display(Game g){
+    public void Display(Game g){
         WriteLine(">>Menu<<");
         WriteLine("Enter '1' to save the game");
         WriteLine("Enter '2' to resume");
@@ -14,6 +16,9 @@ class Menu{
 
         string userInput = Console.ReadLine();
         switch(userInput){
+            case "1":
+                Save(g);
+                break;
             case "2":
                 g.PlayGame();
             break;
@@ -21,5 +26,23 @@ class Menu{
                 Environment.Exit(0);
             break;                 
         }
+    }
+
+    public void Save(Game game){
+
+        // SaveRooms(game.rooms);
+        // SavePlayer(game.player);
+        string jsonString = JsonConvert.SerializeObject(game, Formatting.Indented);
+        File.WriteAllText("json/Saves/save.json", jsonString);
+    }
+
+    void SaveRooms(List<Room> rooms){
+        var data = new {tags = rooms}; 
+        string jsonString = JsonConvert.SerializeObject(data, Formatting.Indented);
+        File.WriteAllText("json/Saves/Rooms.json", jsonString);
+    }
+    void SavePlayer(Player p){
+        string jsonString = JsonConvert.SerializeObject(p, Formatting.Indented);
+        File.WriteAllText("json/Saves/Player.json", jsonString);
     }
 }

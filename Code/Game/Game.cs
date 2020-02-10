@@ -9,7 +9,7 @@ class Game
 {
     public List<Room> rooms;
     public Player player;
-    public String instructions;
+    public String instructions = "Welcome to the 'Adventure of Lonewood Castle'!";
     public Menu menu = new Menu();
     public Room currentRoom;
     Opponent thisOpponent;
@@ -21,11 +21,10 @@ class Game
         
     
 
-    public Game(List<Room> rooms, Player player, String instructions)
+    public Game(List<Room> rooms, Player player)
     {
         this.rooms = rooms;
         this.player = player;
-        this.instructions = instructions;
     }
 
     public void StartGame(){
@@ -66,7 +65,6 @@ class Game
             Console.Clear();
 
             switch(input[0]){
-                case "0":
                 case "q":
                     Environment.Exit(0);
                     break;
@@ -93,6 +91,10 @@ class Game
                 case "drop": 
                     this.LeaveItem(input[1]); 
                     break;
+                case "use":
+                case "u":
+                    player.UseItem(input[1]);
+                    break;
                 case "f":
                 case "fight":
                     this.Fight(input[1]);
@@ -107,6 +109,7 @@ class Game
                     this.ChangeRoom(input[0]);
                     break;
             }
+            this.Winning();
             this.GameOver();
             this.PlayGame();
         }
@@ -204,22 +207,26 @@ class Game
         }
     }
 
+    void OpponentChangeRoom(){
+        if(currentRoom.opponents.Count >= 0){
+            Random r = new Random();
+            int location = r.Next(0, rooms.Count);
+            
+            thisOpponent = currentRoom.opponents[0];
+            Room thisRoom = rooms[location]; 
+            thisRoom.opponents.Add(thisOpponent);
+            thisOpponent.location = location;
+        }
+    }
+
     void ShowCommands(){
-        WriteLine("commands (c): show Commands \n move forward(w), move backward (s), move left (a), move right (d)\n look (l)\n show inventory (i)\n take (t) <item>\n drop <item>\n attack (a) <character name>\n adress <character name>\n save game\n quit (q)");
+        WriteLine("commands (c): show Commands \n move forward (w), move backward (s), move left (a), move right (d)\n look (l)\n show inventory (i)\n take (t) <item>\n drop <item>\n use (u) <item>\n attack (a) <character name>\n adress <character name>\n save game\n quit (q)");
     }
 
     void GameOver(){
         if(player.lives <= 0){
             gameOver = true;
         }
-    }
-    void SaveRooms(){
-        string jsonString = System.Text.Json.JsonSerializer.Serialize(rooms);
-        File.WriteAllText("json/Saves/Rooms.json", jsonString);
-    }
-    void SavePlayer(){
-        string jsonString = System.Text.Json.JsonSerializer.Serialize(player);
-        File.WriteAllText("json/Saves/Player.json", jsonString);
     }
 
     void SpeakTo(String name){
@@ -229,6 +236,29 @@ class Game
             }
         }
         player.Interact(thisOpponent);
+    }
+
+    void Winning(){
+        foreach(Item item in player.inv.itemsList){
+            if(item.usage == "win"){
+                WriteLine("Congratulations! You found the " + item.name);
+                won = true;
+            }
+        }
+        if(won){
+            WriteLine("Here are your stats:");
+            player.DisplayInventory();
+            WriteLine("\n");
+        }
+    }
+
+    void SaveRooms(){
+        string jsonString = System.Text.Json.JsonSerializer.Serialize(rooms);
+        File.WriteAllText("json/Saves/Rooms.json", jsonString);
+    }
+    void SavePlayer(){
+        string jsonString = System.Text.Json.JsonSerializer.Serialize(player);
+        File.WriteAllText("json/Saves/Player.json", jsonString);
     }
 
 }

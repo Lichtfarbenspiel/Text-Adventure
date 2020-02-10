@@ -2,8 +2,8 @@ using System;
 
 public class Item{
     public string name;
-    string usage;
-    int power;
+    public string usage;
+    public int power;
 
     public Item(String name, String usage, int power)
     {
@@ -11,6 +11,4 @@ public class Item{
         this.usage = usage;
         this.power = power;
     }
-
-    // items of the same type can be combined?
 }

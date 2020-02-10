@@ -5,8 +5,8 @@ using static System.Console;
 class Room{
 
     public string name;
-    string description;
-    int position;
+    public string description;
+    public int position;
     public List<Door> doors;
     public List<Item> itemsInRoom;
     public List<Opponent> opponents;
@@ -45,26 +45,26 @@ class Room{
         }
     }
 
-    public void Enter(Door d, Game game){
+    // public void Enter(Door d, Game game){
         
-        // for(int i = 0; i < game.rooms.Count; i++){
-        //     if(game.rooms[i].name == d.leadsTowards && !d.locked){
-        //         nextRoom = game.rooms[i];
-        //         nextRoom.Display();
-        //     }
-        //     else if(game.rooms[i].name == d.leadsTowards && d.locked){
-        //         riddleSolved = d.Riddle();
-        //         if(!riddleSolved){
-        //             WriteLine("You shall not pass until you solve the riddle!");
-        //             this.Display();
-        //         }
-        //         else game.currentRoom.Display();
-        //     }
-        //     else{
-        //         nextRoom = null;
-        //         WriteLine("Unknown command, please try Again!");
-        //         game.currentRoom.Display();
-        //     }
-        // }
-    }
+    //     for(int i = 0; i < game.rooms.Count; i++){
+    //         if(game.rooms[i].name == d.leadsTowards && !d.locked){
+    //             nextRoom = game.rooms[i];
+    //             nextRoom.Display();
+    //         }
+    //         else if(game.rooms[i].name == d.leadsTowards && d.locked){
+    //             riddleSolved = d.Riddle();
+    //             if(!riddleSolved){
+    //                 WriteLine("You shall not pass until you solve the riddle!");
+    //                 this.Display();
+    //             }
+    //             else game.currentRoom.Display();
+    //         }
+    //         else{
+    //             nextRoom = null;
+    //             WriteLine("Unknown command, please try Again!");
+    //             game.currentRoom.Display();
+    //         }
+    //     }
+    // }
 }

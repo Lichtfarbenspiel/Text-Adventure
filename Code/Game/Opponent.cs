@@ -6,7 +6,7 @@ class Opponent : Character
 {
     public string description; 
     public bool isFriendly = true;
-    // List<String> interactions;
+    //public List<String> interactions;
     public bool isAlive = true;
 
     public Opponent(string name, int lives, int location, string description, bool isFriendly, Inventory inv) : base(name, lives, location, inv)
@@ -17,14 +17,13 @@ class Opponent : Character
         this.description = description;
         this.isFriendly = isFriendly;
         this.inv = inv;
-        
     }
 
     public override void DropItem(Item item){
         inv.RemoveItem(item);
     }
 
-    public override Character Attack(Character player){
+    public Player Attack(Player player){
         double damageMax;
         double damageMin;
 
@@ -32,26 +31,26 @@ class Opponent : Character
 
         Random r = new Random();
 
-        if(player.lives >= 3){
-            damageMax = 0.2f;
-            damageMin = 0.0f;
+        if(this.lives >= 3){
+            damageMax = 0.6f;
+            damageMin = 0.4f;
 
             double damage = r.NextDouble() * (damageMin - damageMax) + damageMin;
-            player.lives -= (int)(lives * damage);
+            player.lives -= (int)(player.lives * damage);
         }
-        if(player.lives == 2){
+        if(this.lives == 2){
             damageMax = 0.4f;
             damageMin = 0.2f;
 
             double damage = r.NextDouble() * (damageMin - damageMax) + damageMin;
-            player.lives -= (int)(lives * damage);
+            player.lives -= (int)(player.lives * damage);
         }
-        if(player.lives == 1){
-            damageMax = 0.6f;
-            damageMin = 0.4f;
+        if(this.lives == 1){
+            damageMax = 0.2f;
+            damageMin = 0.0f;
             
             double damage = r.NextDouble() * (damageMin - damageMax) + damageMin;
-            player.lives -= (int)(lives * damage);
+            player.lives -= (int)(player.lives * damage);
         }
         if(player.lives == 0){
             player.isAlive = false;

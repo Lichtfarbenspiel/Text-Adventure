@@ -1,0 +1,147 @@
+{
+  "tags": [
+    {
+      "name": "outside",
+      "doors": [
+        {
+          "riddles": [
+            {}
+          ],
+          "locked": true,
+          "direction": "w",
+          "leadsTowards": "entrance"
+        }
+      ],
+      "itemsInRoom": [
+        {
+          "name": "ball"
+        }
+      ],
+      "opponents": [
+        {
+          "description": "A large black wolf-like creature, that moves in the shadows.",
+          "isFriendly": true,
+          "isAlive": true,
+          "name": "amera",
+          "lives": 3,
+          "location": 0,
+          "inv": {
+            "itemsList": [
+              {
+                "name": "potion"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "entrance",
+      "doors": [
+        {
+          "riddles": [],
+          "locked": false,
+          "direction": "s",
+          "leadsTowards": "outside"
+        },
+        {
+          "riddles": [
+            {}
+          ],
+          "locked": true,
+          "direction": "a",
+          "leadsTowards": "dining hall"
+        },
+        {
+          "riddles": [
+            {}
+          ],
+          "locked": true,
+          "direction": "d",
+          "leadsTowards": "kitchen"
+        },
+        {
+          "riddles": [],
+          "locked": false,
+          "direction": "w",
+          "leadsTowards": "upstairs"
+        }
+      ],
+      "itemsInRoom": [
+        {
+          "name": "sword"
+        },
+        {
+          "name": "pipe"
+        },
+        {
+          "name": "gemstone"
+        }
+      ],
+      "opponents": []
+    },
+    {
+      "name": "dining hall",
+      "doors": [
+        {
+          "riddles": [],
+          "locked": false,
+          "direction": "d",
+          "leadsTowards": "entrance"
+        }
+      ],
+      "itemsInRoom": [
+        {
+          "name": "gemstone"
+        }
+      ],
+      "opponents": []
+    },
+    {
+      "name": "kitchen",
+      "doors": [
+        {
+          "riddles": [],
+          "locked": false,
+          "direction": "a",
+          "leadsTowards": "entrance"
+        }
+      ],
+      "itemsInRoom": [
+        {
+          "name": "gemstone"
+        }
+      ],
+      "opponents": []
+    },
+    {
+      "name": "upstairs",
+      "doors": [
+        {
+          "riddles": [],
+          "locked": false,
+          "direction": "w",
+          "leadsTowards": "entrance"
+        }
+      ],
+      "itemsInRoom": [],
+      "opponents": [
+        {
+          "description": "A strong human looking monster. It has the tiara in its possesion.",
+          "isFriendly": false,
+          "isAlive": true,
+          "name": "sudagog",
+          "lives": 4,
+          "location": 4,
+          "inv": {
+            "itemsList": [
+              {
+                "name": "tiara"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

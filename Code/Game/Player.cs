@@ -46,32 +46,33 @@ class Player : Character{
 
         Random r = new Random();
 
-        if(opponent.lives == 3){
-            damageMax = 0.2f;
-            damageMin = 0.0f;
+        if(this.lives == 3){
+            damageMax = 0.6f;
+            damageMin = 0.4f;
             
             double damage = r.NextDouble() * (damageMin - damageMax) + damageMin;
-            opponent.lives -= (int)(lives * damage);
+            opponent.lives -= (int)(opponent.lives * damage);
         }
-        if(opponent.lives == 2){
+        if(this.lives == 2){
+            damageMax = 0.5f;
+            damageMin = 0.3f;
+
+            double damage = r.NextDouble() * (damageMin - damageMax) + damageMin;
+            opponent.lives -= (int)(opponent.lives * damage);
+        }
+        if(this.lives == 1){
             damageMax = 0.4f;
             damageMin = 0.2f;
 
             double damage = r.NextDouble() * (damageMin - damageMax) + damageMin;
-            opponent.lives -= (int)(lives * damage);
-        }
-        if(opponent.lives == 1){
-            damageMax = 0.6f;
-            damageMin = 0.4f;
-
-            double damage = r.NextDouble() * (damageMin - damageMax) + damageMin;
-            opponent.lives -= (int)(lives * damage);
+            opponent.lives -= (int)(opponent.lives * damage);
         }
         if(opponent.lives == 0){
             opponent.isAlive = false;
             
         }
         WriteLine("Opponent's lives left: " + this.lives);
+        opponent.Attack(this);
         return opponent;
     }
 
@@ -82,5 +83,20 @@ class Player : Character{
         opponent.Interact(this);
     }
 
-
+    public void UseItem(String input){
+        foreach(Item item in inv.itemsList){
+            if(input == item.name){
+                if(item.power >= 1){
+                    this.lives += item.power;
+                }
+                switch(item.usage){
+                    case "fire":
+                        WriteLine("'A fire has been lit'");
+                        this.inv.RemoveItem(item);
+                        break;
+                }
+            }
+            
+        }
+    }
 }

@@ -1,0 +1,19 @@
+{
+  "isAlive": true,
+  "name": "one",
+  "lives": 3,
+  "location": 0,
+  "inv": {
+    "itemsList": [
+      {
+        "name": "matches"
+      },
+      {
+        "name": "ball"
+      },
+      {
+        "name": "club"
+      }
+    ]
+  }
+}

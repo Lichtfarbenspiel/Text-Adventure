@@ -109,7 +109,7 @@
                         },
                         {
                             "name": "gemstone", 
-                            "usage": "tiara",
+                            "usage": "treasure",
                             "power": 0
                         }
                 ],
@@ -130,7 +130,7 @@
                 "itemsInRoom":[
                         {
                             "name": "gemstone",
-                            "usage": "tiara",
+                            "usage": "treasure",
                             "power": 0
                         }
                 ],
@@ -151,7 +151,7 @@
                 "itemsInRoom":[
                         {
                             "name": "gemstone",
-                            "usage": "tiara",
+                            "usage": "treasure",
                             "power": 0
                         }
                 ],

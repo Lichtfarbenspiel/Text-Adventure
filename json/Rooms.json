@@ -1,7 +1,7 @@
 [
     {
         "name": "outside",
-        "description": "You are Standing in front of an old castle, a couple miles from the next village, on seemingly never ending grounds. Abandoned for a long time it is rising majestically in the dark, only lit by a little spark of moonlight. \n The night is cold and there are noises fom the wild everywhere. It almost seems as if they weren‘t from this world, so mysteriously and enchanting. Suddenly a big shadow runs past you and towards the nearby woods.",
+        "description": "You are Standing in front of an old castle, a couple miles from the next village,\non seemingly never ending grounds. \nAbandoned for a long time it is rising majestically in the dark, only lit by the faintly glow of moonlight. \nThe night is cold and there are noises fom the wild everywhere. \nIt almost seems as if they weren‘t from this world, so mysteriously and enchanting. \nSuddenly a big shadow runs past you and towards the nearby woods.",
         "position": 0,
         "doors":[
             {
@@ -52,7 +52,7 @@
     },
     {
         "name": "entrance",
-        "description": "The ceiling is high above your head, there are old Paintings all over the big walls. Some are damaged. \n The settee in front of you looks old, but not worn off an there is settled dust everywhere. There hasn’t been anyone in here for a very long time. In the back of the room are two staircases leading up to the second floor. \n On both sides, to your left and right, are closed doors. ",
+        "description": "The ceiling is high above your head, there are old Paintings all over the big walls. Some are damaged. \nThe settee in front of you looks old, but not worn off. The dust has settled everywhere. \nThere hasn’t been anyone in here for a very long time. \nIn the back of the room are two staircases leading up to the second floor. \n On both sides, to your left and right, are closed doors. ",
         "position": 1,
         "doors":[
             {
@@ -117,7 +117,7 @@
     },
     {
         "name": "dining hall",
-        "description": "",
+        "description": "A big room, with dark wooden walls with just as much paintings decorating them. \nThe long curtains in front of the big windows shield this room from the outside. \nThere is a piano in the left far corner. \nIn the middle of the Room is a big table, this room once was for dining.",
         "position": 2,
         "doors":[
             {
@@ -138,7 +138,7 @@
     },
     {
         "name": "kitchen",
-        "description": "",
+        "description": "This is the kitchen, or what is left of it. There are rats running everywhere, scared, in search for somewhere to hide. \nA big old stove is on the opposite side. Next to it a small door – it probably used to be the servants entrance. \nOld dusty pots and cooking pans are lying on the floor. ",
         "position": 3,
         "doors":[
             {

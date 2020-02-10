@@ -42,13 +42,10 @@ namespace Text_Adventure
             game.StartGame();
         }
 
-        public static void Save(Game game){
-            // string jsonString = JsonConvert.SerializeObject(game, Formatting.Indented, FilePath);
-            // File.WriteAllText("Ressources\save.json", jsonString);
-        }
+        
 
         void Resume(){
-            // game.currentRoom.Display();
+            game.currentRoom.Display();
         }
 
         void Quit(){

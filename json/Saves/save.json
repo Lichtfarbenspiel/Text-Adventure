@@ -1,0 +1,248 @@
+{
+  "rooms": [
+    {
+      "name": "outside",
+      "description": "You are Standing in front of an old castle, a couple miles from the next village, on seemingly never ending grounds. Abandoned for a long time it is rising majestically in the dark, only lit by a little spark of moonlight. \n The night is cold and there are noises fom the wild everywhere. It almost seems as if they weren‘t from this world, so mysteriously and enchanting. Suddenly a big shadow runs past you and towards the nearby woods.",
+      "position": 0,
+      "doors": [
+        {
+          "riddles": [
+            {}
+          ],
+          "locked": true,
+          "direction": "w",
+          "leadsTowards": "entrance"
+        }
+      ],
+      "itemsInRoom": [
+        {
+          "name": "club",
+          "usage": "fight",
+          "power": 1
+        },
+        {
+          "name": "ball",
+          "usage": "befriend",
+          "power": 0
+        }
+      ],
+      "opponents": [
+        {
+          "description": "A large black wolf-like creature, that moves in the shadows.",
+          "isFriendly": true,
+          "isAlive": true,
+          "name": "amera",
+          "lives": 3,
+          "location": 0,
+          "inv": {
+            "itemsList": [
+              {
+                "name": "potion",
+                "usage": "health",
+                "power": 1
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "entrance",
+      "description": "The ceiling is high above your head, there are old Paintings all over the big walls. Some are damaged. \n The settee in front of you looks old, but not worn off an there is settled dust everywhere. There hasn’t been anyone in here for a very long time. In the back of the room are two staircases leading up to the second floor. \n On both sides, to your left and right, are closed doors. ",
+      "position": 1,
+      "doors": [
+        {
+          "riddles": [],
+          "locked": false,
+          "direction": "s",
+          "leadsTowards": "outside"
+        },
+        {
+          "riddles": [
+            {}
+          ],
+          "locked": true,
+          "direction": "a",
+          "leadsTowards": "dining hall"
+        },
+        {
+          "riddles": [
+            {}
+          ],
+          "locked": true,
+          "direction": "d",
+          "leadsTowards": "kitchen"
+        },
+        {
+          "riddles": [],
+          "locked": false,
+          "direction": "w",
+          "leadsTowards": "upstairs"
+        }
+      ],
+      "itemsInRoom": [
+        {
+          "name": "sword",
+          "usage": "fight",
+          "power": 2
+        },
+        {
+          "name": "pipe",
+          "usage": "smoke",
+          "power": 0
+        },
+        {
+          "name": "gemstone",
+          "usage": "tiara",
+          "power": 0
+        }
+      ],
+      "opponents": []
+    },
+    {
+      "name": "dining hall",
+      "description": "",
+      "position": 2,
+      "doors": [
+        {
+          "riddles": [],
+          "locked": false,
+          "direction": "d",
+          "leadsTowards": "entrance"
+        }
+      ],
+      "itemsInRoom": [
+        {
+          "name": "gemstone",
+          "usage": "tiara",
+          "power": 0
+        }
+      ],
+      "opponents": []
+    },
+    {
+      "name": "kitchen",
+      "description": "",
+      "position": 3,
+      "doors": [
+        {
+          "riddles": [],
+          "locked": false,
+          "direction": "a",
+          "leadsTowards": "entrance"
+        }
+      ],
+      "itemsInRoom": [
+        {
+          "name": "gemstone",
+          "usage": "tiara",
+          "power": 0
+        }
+      ],
+      "opponents": []
+    },
+    {
+      "name": "upstairs",
+      "description": "",
+      "position": 4,
+      "doors": [
+        {
+          "riddles": [],
+          "locked": false,
+          "direction": "w",
+          "leadsTowards": "entrance"
+        }
+      ],
+      "itemsInRoom": [],
+      "opponents": [
+        {
+          "description": "A strong human looking monster. It has the tiara in its possesion.",
+          "isFriendly": false,
+          "isAlive": true,
+          "name": "sudagog",
+          "lives": 4,
+          "location": 4,
+          "inv": {
+            "itemsList": [
+              {
+                "name": "tiara",
+                "usage": "win",
+                "power": 0
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "player": {
+    "isAlive": true,
+    "name": "one",
+    "lives": 3,
+    "location": 0,
+    "inv": {
+      "itemsList": [
+        {
+          "name": "matches",
+          "usage": "fire",
+          "power": 0
+        },
+        {
+          "name": "ball",
+          "usage": "befriend",
+          "power": 0
+        }
+      ]
+    }
+  },
+  "instructions": "how to play",
+  "menu": {},
+  "currentRoom": {
+    "name": "outside",
+    "description": "You are Standing in front of an old castle, a couple miles from the next village, on seemingly never ending grounds. Abandoned for a long time it is rising majestically in the dark, only lit by a little spark of moonlight. \n The night is cold and there are noises fom the wild everywhere. It almost seems as if they weren‘t from this world, so mysteriously and enchanting. Suddenly a big shadow runs past you and towards the nearby woods.",
+    "position": 0,
+    "doors": [
+      {
+        "riddles": [
+          {}
+        ],
+        "locked": true,
+        "direction": "w",
+        "leadsTowards": "entrance"
+      }
+    ],
+    "itemsInRoom": [
+      {
+        "name": "club",
+        "usage": "fight",
+        "power": 1
+      },
+      {
+        "name": "ball",
+        "usage": "befriend",
+        "power": 0
+      }
+    ],
+    "opponents": [
+      {
+        "description": "A large black wolf-like creature, that moves in the shadows.",
+        "isFriendly": true,
+        "isAlive": true,
+        "name": "amera",
+        "lives": 3,
+        "location": 0,
+        "inv": {
+          "itemsList": [
+            {
+              "name": "potion",
+              "usage": "health",
+              "power": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "gameOver": false,
+  "won": false
+}
