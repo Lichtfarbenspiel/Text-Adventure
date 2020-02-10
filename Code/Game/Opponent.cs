@@ -5,19 +5,19 @@ using static System.Console;
 class Opponent : Character
 {
     public string description; 
-    public bool befriend;
-    List<String> interactions;
+    public bool isFriendly = true;
+    // List<String> interactions;
     public bool isAlive = true;
 
-    public Opponent(string name, int lives, int location, Inventory inv, string description, bool befriend, List<String> interactions) : base(name, lives, location, inv)
+    public Opponent(string name, int lives, int location, string description, bool isFriendly, Inventory inv) : base(name, lives, location, inv)
     {
         this.name = name;          
         this.lives = lives;
         this.location = location;
-        this.inv = inv;
-        this.befriend = befriend;
-        this.interactions = interactions;
         this.description = description;
+        this.isFriendly = isFriendly;
+        this.inv = inv;
+        
     }
 
     public override void DropItem(Item item){
@@ -61,8 +61,23 @@ class Opponent : Character
     }
 
 
-    public override void Interact(){
-        WriteLine(interactions[0]);
-        interactions.Remove(interactions[0]);
+    public override void Interact(Character player){
+        if(this.isFriendly){
+            if(inv.itemsList.Count <= 0){
+                WriteLine("I am sorry my friend, i don't have anything to give.");
+            }
+            else{
+                for(int i = 0; i < inv.itemsList.Count; i ++){
+                    Item item = inv.itemsList[i];
+                    this.DropItem(item);
+                    WriteLine("My friend, please take this " + item.name);
+                    player.TakeItem(item);
+                }
+            }
+        }
+        else{
+            WriteLine("You are no friend of mine!");
+            this.Attack(player);
+        }
     }
 }

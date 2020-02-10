@@ -36,6 +36,8 @@
                         "name": "amera",
                         "lives": 3,
                         "location": 0,
+                        "description": "A large black wolf-like creature, that moves in the shadows.",
+                        "isFriendly": true,
                         "inv":{
                             "itemsList":[
                                 {
@@ -44,9 +46,7 @@
                                    "power": 0
                                 }
                             ]
-                        },
-                        "befirend": true,
-                        "description": "A large black wolf-like creature, that moves in the shadows."
+                        }
                     }
                 ]
             },
@@ -177,6 +177,8 @@
                         "name": "sudagog",
                         "lives": 4,
                         "location": 4,
+                        "description": "A strong human looking monster. It has the tiara in its possesion.",
+                        "isFriendly": false,
                         "inv":{
                             "itemsList":[
                                 {
@@ -185,9 +187,7 @@
                                    "power": 0
                                 }
                             ]
-                        },
-                        "befirend": false,
-                        "description": "A strong human looking monster. It has the tiara in its possesion."
+                        }
                     }
                 ]
             }

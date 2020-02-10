@@ -34,7 +34,7 @@ public class Character{
       inv.RemoveItem(item);
    }
 
-   public virtual void Interact(){
+   public virtual void Interact(Character c){
       WriteLine("Hello!");
    }
 

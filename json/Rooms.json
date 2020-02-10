@@ -22,11 +22,13 @@
         "itemsInRoom":[
                 {
                     "name": "club",
-                    "usage": "fight" 
+                    "usage": "fight",
+                    "power": 1
                 }, 
                 {
                     "name": "ball", 
-                    "usage": "befriend"
+                    "usage": "befriend",
+                    "power": 0
                 }
         ],
         "opponents":[
@@ -34,17 +36,17 @@
                 "name": "amera",
                 "lives": 3,
                 "location": 0,
+                "description": "A large black wolf-like creature, that moves in the shadows.",
+                "isFriendly": true,
                 "inv":{
                     "itemsList":[
                         {
-                        "name": "potion",
-                        "usage": "health",
-                        "power": 0
+                            "name": "potion",
+                            "usage": "health",
+                            "power": 1
                         }
                     ]
-                },
-                "befirend": true,
-                "description": "A large black wolf-like creature, that moves in the shadows."
+                }
             }
         ]
     },
@@ -175,17 +177,17 @@
                 "name": "sudagog",
                 "lives": 4,
                 "location": 4,
+                "description": "A strong human looking monster. It has the tiara in its possesion.",
+                "isFriendly": false,
                 "inv":{
                     "itemsList":[
                         {
-                        "name": "tiara",
-                        "usage": "win",
-                        "power": 0
+                            "name": "tiara",
+                            "usage": "win",
+                            "power": 0
                         }
                     ]
-                },
-                "befirend": false,
-                "description": "A strong human looking monster. It has the tiara in its possesion."
+                }
             }
         ]
     }

@@ -69,17 +69,17 @@ class Player : Character{
         }
         if(opponent.lives == 0){
             opponent.isAlive = false;
+            
         }
         WriteLine("Opponent's lives left: " + this.lives);
         return opponent;
     }
 
-    public void Move(string direction){
-        
-    }
-     
-    public override void Interact(){
-
+    public override void Interact(Character opponent){
+        WriteLine("What would you like to say to" + opponent.name + "? ");
+        Write(">");
+        string input = Console.ReadLine();
+        opponent.Interact(this);
     }
 
 

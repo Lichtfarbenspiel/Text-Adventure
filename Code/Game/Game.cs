@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
+using Newtonsoft.Json;
 using static System.Console;
+using System.Linq;
 
 class Game
 {
@@ -94,6 +97,9 @@ class Game
                 case "fight":
                     this.Fight(input[1]);
                     break;
+                case "adress":
+                    this.SpeakTo(input[1]);
+                    break;
                 case "w":  
                 case "a": 
                 case "s": 
@@ -101,9 +107,11 @@ class Game
                     this.ChangeRoom(input[0]);
                     break;
             }
+            this.GameOver();
             this.PlayGame();
         }
         else{
+            Console.Clear();
             WriteLine("Game Over!");
         }
     }
@@ -152,20 +160,24 @@ class Game
         }  
     }    
     void Fight(String input){
-        int amount = currentRoom.opponents.Count;
-        if(amount > 0){
-            for(int i = 0; i < amount; i ++){
-                thisOpponent = currentRoom.opponents[i];
-                if(String.Equals(thisOpponent.name, input)){
-                    player.Attack(thisOpponent);
-                }
-                else{
-                    WriteLine(wrongCommand);
-                }
-            }
+
+        if(currentRoom.opponents.Count == 0){
+            WriteLine("There are no opponents to attack.");
         }
         else{
-            WriteLine("There are no opponents to attack.");
+            foreach(Opponent op in currentRoom.opponents){
+                if(op.name == input){
+                    thisOpponent = op;
+                    player.Attack(thisOpponent);
+                }
+            }
+            if(!thisOpponent.isAlive){
+                foreach(Item item in thisOpponent.inv.itemsList){
+                    thisItem = item;
+                    thisOpponent.inv.RemoveItem(item);
+                    currentRoom.itemsInRoom.Add(thisItem);
+                }
+            }
         }
     }
 
@@ -193,6 +205,30 @@ class Game
     }
 
     void ShowCommands(){
-        WriteLine("commands (c): show Commands \n move forward(w), move backward (s), move left (a), move right (d)\n look (l)\n show inventory (i)\n take (t item) <item>\n drop (drop item) <item>\n attack (a name) <character>.\n save (save) game\n quit (q)");
+        WriteLine("commands (c): show Commands \n move forward(w), move backward (s), move left (a), move right (d)\n look (l)\n show inventory (i)\n take (t) <item>\n drop <item>\n attack (a) <character name>\n adress <character name>\n save game\n quit (q)");
     }
+
+    void GameOver(){
+        if(player.lives <= 0){
+            gameOver = true;
+        }
+    }
+    void SaveRooms(){
+        string jsonString = System.Text.Json.JsonSerializer.Serialize(rooms);
+        File.WriteAllText("json/Saves/Rooms.json", jsonString);
+    }
+    void SavePlayer(){
+        string jsonString = System.Text.Json.JsonSerializer.Serialize(player);
+        File.WriteAllText("json/Saves/Player.json", jsonString);
+    }
+
+    void SpeakTo(String name){
+        foreach(Opponent op in currentRoom.opponents){
+            if(name == op.name){
+                thisOpponent = op;
+            }
+        }
+        player.Interact(thisOpponent);
+    }
+
 }
