@@ -35,14 +35,4 @@ class Menu{
         File.WriteAllText("json/Saves/save.json", jsonString);
         System.Threading.Thread.Sleep(2000);       
     }
-
-    // void SaveRooms(List<Room> rooms){
-    //     var data = new {tags = rooms}; 
-    //     string jsonString = JsonConvert.SerializeObject(data, Formatting.Indented);
-    //     File.WriteAllText("json/Saves/Rooms.json", jsonString);
-    // }
-    // void SavePlayer(Player p){
-    //     string jsonString = JsonConvert.SerializeObject(p, Formatting.Indented);
-    //     File.WriteAllText("json/Saves/Player.json", jsonString);
-    // }
 }

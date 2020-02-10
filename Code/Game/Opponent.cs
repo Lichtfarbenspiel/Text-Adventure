@@ -8,7 +8,7 @@ class Opponent : Character
     public bool isFriendly = true;
     public int level;
     //public List<String> interactions;
-    public bool isAlive = true;
+   
 
     public Opponent(string name, int lives, int location, string description, bool isFriendly, int level, Inventory inv) : base(name, lives, location, inv)
     {
@@ -21,10 +21,6 @@ class Opponent : Character
         this.inv = inv;
     }
 
-    public override void DropItem(Item item){
-        inv.RemoveItem(item);
-    }
-
     public Player Attack(Player player){
         double damageMax;
         double damageMin;
@@ -33,36 +29,39 @@ class Opponent : Character
 
         Random r = new Random();
 
-        if(this.lives >= 3){
+        if(this.lives >= 1){
             damageMax = 0.7f;
-            damageMin = 0.5f;
-
-            double damage = r.NextDouble() * (damageMin - damageMax) + damageMin;
-            player.lives -= (int)(player.lives * damage);
-        }
-        if(this.lives == 2){
-            damageMax = 0.5f;
-            damageMin = 0.4f;
-
-            double damage = r.NextDouble() * (damageMin - damageMax) + damageMin;
-            player.lives -= (int)(player.lives * damage);
-        }
-        if(this.lives == 1){
-            damageMax = 0.4f;
             damageMin = 0.3f;
-            
+
             double damage = r.NextDouble() * (damageMin - damageMax) + damageMin;
             player.lives -= (int)(player.lives * damage);
         }
-        if(player.lives == 0){
+        // if(this.lives == 2){
+        //     damageMax = 0.6f;
+        //     damageMin = 0.4f;
+
+        //     double damage = r.NextDouble() * (damageMin - damageMax) + damageMin;
+        //     player.lives -= (int)(player.lives * damage);
+        // }
+        // if(this.lives == 1){
+        //     damageMax = 0.5f;
+        //     damageMin = 0.3f;
+            
+        //     double damage = r.NextDouble() * (damageMin - damageMax) + damageMin;
+        //     player.lives -= (int)(player.lives * damage);
+        // }
+        else if(player.lives == 0){
             player.isAlive = false;
         }
         WriteLine("Lives left: " + player.lives);
         return player;
     }
 
+    public override void DropItem(Item item){
+        inv.RemoveItem(item);
+    }
 
-    public override void Interact(Character player){
+    public void Interact(Player player){
         if(!this.isFriendly){
             WriteLine("You are no friend of mine!");
             this.Attack(player);

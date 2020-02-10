@@ -20,7 +20,7 @@ public class Inventory{
         itemsList.Remove(item);
     }
 
-    public void Combine(Item[] items){
+    // public void Combine(Item[] items){
         
-    }
+    // }
 }

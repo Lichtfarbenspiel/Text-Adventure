@@ -98,8 +98,7 @@ class Game
                 case "u":
                     player.UseItem(input[1]);
                     break;
-                case "f":
-                case "fight":
+                case "attack":
                     this.Fight(input[1]);
                     break;
                 case "adress":
@@ -236,7 +235,7 @@ class Game
     }
 
     void ShowCommands(){
-        WriteLine("commands (c): show Commands \n move forward (w), move backward (s), move left (a), move right (d)\n look (l)\n show inventory (i)\n take (t) <item>\n drop <item>\n use (u) <item>\n attack (a) <character name>\n adress <character name>\n save game\n quit (q)");
+        WriteLine("commands (c): show Commands \n move forward (w), move backward (s), move left (a), move right (d)\n look (l)\n show inventory (i)\n take (t) <item>\n drop <item>\n use (u) <item>\n attack <character name>\n adress <character name>\n save game\n quit (q)");
     }
 
     void GameOver(){
@@ -267,14 +266,4 @@ class Game
             WriteLine("\n");
         }
     }
-
-    void SaveRooms(){
-        string jsonString = System.Text.Json.JsonSerializer.Serialize(rooms);
-        File.WriteAllText("json/Saves/Rooms.json", jsonString);
-    }
-    void SavePlayer(){
-        string jsonString = System.Text.Json.JsonSerializer.Serialize(player);
-        File.WriteAllText("json/Saves/Player.json", jsonString);
-    }
-
 }

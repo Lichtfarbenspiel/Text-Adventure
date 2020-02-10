@@ -191,7 +191,7 @@
       },
       {
         "name": "upstairs",
-        "description": "This used to be a bedroom.",
+        "description": "There is a bedroom with an old canopy bed inside. \nThis might have been the masters room by the looks of the wooden panelling \nand all those ornaments on every piece of furniture.",
         "position": 4,
         "doors": [
           {

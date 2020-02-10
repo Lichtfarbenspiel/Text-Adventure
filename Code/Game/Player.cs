@@ -46,27 +46,27 @@ class Player : Character{
 
         Random r = new Random();
 
-        if(this.lives >= 3){
-            damageMax = 0.7f;
-            damageMin = 0.5f;
+        if(this.lives >= 1){
+            damageMax = 0.6f;
+            damageMin = 0.3f;
             
             double damage = r.NextDouble() * (damageMin - damageMax) + damageMin;
             opponent.lives -= (int)(opponent.lives * damage);
         }
-        else if(this.lives == 2){
-            damageMax = 0.5f;
-            damageMin = 0.4f;
+        // else if(this.lives == 2){
+        //     damageMax = 0.6f;
+        //     damageMin = 0.4f;
 
-            double damage = r.NextDouble() * (damageMin - damageMax) + damageMin;
-            opponent.lives -= (int)(opponent.lives * damage);
-        }
-        else if(this.lives == 1){
-            damageMax = 0.4f;
-            damageMin = 0.3f;
+        //     double damage = r.NextDouble() * (damageMin - damageMax) + damageMin;
+        //     opponent.lives -= (int)(opponent.lives * damage);
+        // }
+        // else if(this.lives == 1){
+        //     damageMax = 0.5f;
+        //     damageMin = 0.3f;
 
-            double damage = r.NextDouble() * (damageMin - damageMax) + damageMin;
-            opponent.lives -= (int)(opponent.lives * damage);
-        }
+        //     double damage = r.NextDouble() * (damageMin - damageMax) + damageMin;
+        //     opponent.lives -= (int)(opponent.lives * damage);
+        // }
         else if(opponent.lives == 0){
             opponent.isAlive = false;
             WriteLine("You killed " + opponent.name);
@@ -78,7 +78,7 @@ class Player : Character{
         return opponent;
     }
 
-    public override void Interact(Character opponent){
+    public void Interact(Opponent opponent){
         WriteLine("What would you like to say to " + opponent.name.ToUpper() + "? ");
         Write(">");
         string input = Console.ReadLine();

@@ -9,11 +9,6 @@ namespace Text_Adventure
     class Program
     {
         static Game game;
-        static List<Room> rooms;
-        static Player player;
-        static string PathRooms = "json/Rooms.json";
-        static string PathPlayer = "json/Player.json";
-        static string instructions = "Welcome to the 'Adventure of Lonewood Castle'!";
         
        
         static void Main(string[] args)
