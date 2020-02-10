@@ -16,11 +16,12 @@ class Player : Character{
     }
     public override void TakeItem(Item item){
             inv.AddItem(item); 
-            WriteLine(item + " has been added to your inventory");
+            WriteLine(item.name + " has been added to your inventory");
     }
     public override void DropItem(Item item){
         if(inv.itemsList.Count > 0){
             inv.RemoveItem(item);
+            WriteLine("you dropped " + item.name);
         }
         else{
             WriteLine("There are no items in your inventory.");
@@ -35,10 +36,6 @@ class Player : Character{
         }
         WriteLine("\n");
         WriteLine("Your Health:" + lives + " health points");
-    }
-
-    void move(Room r){
-
     }
 
     public Opponent Attack(Opponent opponent){

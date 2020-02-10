@@ -63,16 +63,24 @@ class Game
             Console.Clear();
 
             switch(input[0]){
-                case "m": 
-                    menu.Display(); 
+                case "0":
+                case "q":
+                    Environment.Exit(0);
+                    break;
+                case "m":
+                case "menu": 
+                    menu.Display(this); 
                     break;
                 case "c": 
+                case "commands":
                     this.ShowCommands(); 
                     break;
                 case "l":
+                case "look":
                     currentRoom.Display(); 
                     break;
                 case "i": 
+                case "inventory":
                     player.DisplayInventory(); 
                     break;
                 case "take":
@@ -83,6 +91,7 @@ class Game
                     this.LeaveItem(input[1]); 
                     break;
                 case "f":
+                case "fight":
                     this.Fight(input[1]);
                     break;
                 case "w":  
@@ -122,20 +131,23 @@ class Game
     }
 
     void LeaveItem(String input){
-        int amount = player.inv.itemsList.Count;
-
-        for(int i = 0; i < amount; i++){
-            thisItem = player.inv.itemsList[i];
+        if(player.inv.itemsList.Count == 0){
+            WriteLine("There are no items in your inventory.");
+            currentRoom.Display();
+        }
+        else{
+            for(int i = 0; i < player.inv.itemsList.Count; i++){
             
-            if(String.Equals(thisItem.name, input)){
-
-                player.inv.RemoveItem(thisItem);
-                currentRoom.itemsInRoom.Add(thisItem);
-            }
-            else{
-                WriteLine(wrongCommand);
-                System.Threading.Thread.Sleep(5000);
-                currentRoom.Display();
+                if(player.inv.itemsList[i].name != input){
+                    WriteLine(wrongCommand);
+                    System.Threading.Thread.Sleep(2000);
+                    currentRoom.Display();
+                } 
+                else{
+                    thisItem = player.inv.itemsList[i];
+                    player.DropItem(thisItem);
+                    currentRoom.itemsInRoom.Add(thisItem);
+                }
             }
         }  
     }    
@@ -181,6 +193,6 @@ class Game
     }
 
     void ShowCommands(){
-        WriteLine("commands (c): show Commands \n move forward(w), move backward (s), move left (a), move right (d)\n look (l)\n show inventory (i)\n take (t item) <item>\n drop (d item) <item>\n attack (a name) <character>.\n save (save) game\n quit (q)");
+        WriteLine("commands (c): show Commands \n move forward(w), move backward (s), move left (a), move right (d)\n look (l)\n show inventory (i)\n take (t item) <item>\n drop (drop item) <item>\n attack (a name) <character>.\n save (save) game\n quit (q)");
     }
 }
