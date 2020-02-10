@@ -27,7 +27,7 @@ class Door{
         int number  = rnd.Next(0, riddles.Count);
         
         QuizElement thisRiddle = riddles.ElementAt(0);
-        WriteLine("To pass you first have to solve a riddle.");
+        WriteLine("To pass you first have to solve this riddle.");
         thisRiddle.Display();
         Write(">");
         string userInput = ReadLine();

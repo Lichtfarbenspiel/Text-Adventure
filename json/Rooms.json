@@ -38,6 +38,7 @@
                 "location": 0,
                 "description": "A large black wolf-like creature, that moves in the shadows.",
                 "isFriendly": true,
+                "level": 2,
                 "inv":{
                     "itemsList":[
                         {
@@ -159,7 +160,7 @@
     },
     {
         "name": "upstairs",
-        "description": "",
+        "description": "This used to be a bedroom.",
         "position": 4,
         "doors":[
             {
@@ -179,6 +180,7 @@
                 "location": 4,
                 "description": "A strong human looking monster. It has the tiara in its possesion.",
                 "isFriendly": false,
+                "level": 1,
                 "inv":{
                     "itemsList":[
                         {

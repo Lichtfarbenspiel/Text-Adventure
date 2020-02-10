@@ -25,46 +25,23 @@ class Room{
     }
 
     public void Display(){
+        Console.Clear();
         WriteLine(description);
         if(itemsInRoom.Count > 0){
             WriteLine("\n");
             WriteLine("You can see ");
             foreach (Item item in itemsInRoom)
             {
-                WriteLine(item.name);
+                WriteLine("- a/an " + item.name);
             }
         }
         if(opponents.Count > 0){
-            WriteLine("There are the following Characters:");
             WriteLine("\n");
+            WriteLine("There are the following Characters:");
             foreach (Opponent op in opponents)
             {
-                WriteLine(op.name + " " + op.description);
-                WriteLine("\n");
+                WriteLine("- " + op.name.ToUpper() + " " + op.description);
             }
         }
     }
-
-    // public void Enter(Door d, Game game){
-        
-    //     for(int i = 0; i < game.rooms.Count; i++){
-    //         if(game.rooms[i].name == d.leadsTowards && !d.locked){
-    //             nextRoom = game.rooms[i];
-    //             nextRoom.Display();
-    //         }
-    //         else if(game.rooms[i].name == d.leadsTowards && d.locked){
-    //             riddleSolved = d.Riddle();
-    //             if(!riddleSolved){
-    //                 WriteLine("You shall not pass until you solve the riddle!");
-    //                 this.Display();
-    //             }
-    //             else game.currentRoom.Display();
-    //         }
-    //         else{
-    //             nextRoom = null;
-    //             WriteLine("Unknown command, please try Again!");
-    //             game.currentRoom.Display();
-    //         }
-    //     }
-    // }
 }

@@ -2,14 +2,12 @@
   "rooms": [
     {
       "name": "outside",
-      "description": "You are Standing in front of an old castle, a couple miles from the next village, on seemingly never ending grounds. Abandoned for a long time it is rising majestically in the dark, only lit by a little spark of moonlight. \n The night is cold and there are noises fom the wild everywhere. It almost seems as if they weren‘t from this world, so mysteriously and enchanting. Suddenly a big shadow runs past you and towards the nearby woods.",
+      "description": "You are Standing in front of an old castle, a couple miles from the next village,\non seemingly never ending grounds. \nAbandoned for a long time it is rising majestically in the dark, only lit by the faintly glow of moonlight. \nThe night is cold and there are noises fom the wild everywhere. \nIt almost seems as if they weren‘t from this world, so mysteriously and enchanting. \nSuddenly a big shadow runs past you and towards the nearby woods.",
       "position": 0,
       "doors": [
         {
-          "riddles": [
-            {}
-          ],
-          "locked": true,
+          "riddles": [],
+          "locked": false,
           "direction": "w",
           "leadsTowards": "entrance"
         }
@@ -26,29 +24,11 @@
           "power": 0
         }
       ],
-      "opponents": [
-        {
-          "description": "A large black wolf-like creature, that moves in the shadows.",
-          "isFriendly": true,
-          "isAlive": true,
-          "name": "amera",
-          "lives": 3,
-          "location": 0,
-          "inv": {
-            "itemsList": [
-              {
-                "name": "potion",
-                "usage": "health",
-                "power": 1
-              }
-            ]
-          }
-        }
-      ]
+      "opponents": []
     },
     {
       "name": "entrance",
-      "description": "The ceiling is high above your head, there are old Paintings all over the big walls. Some are damaged. \n The settee in front of you looks old, but not worn off an there is settled dust everywhere. There hasn’t been anyone in here for a very long time. In the back of the room are two staircases leading up to the second floor. \n On both sides, to your left and right, are closed doors. ",
+      "description": "The ceiling is high above your head, there are old Paintings all over the big walls. Some are damaged. \nThe settee in front of you looks old, but not worn off. The dust has settled everywhere. \nThere hasn’t been anyone in here for a very long time. \nIn the back of the room are two staircases leading up to the second floor. \n On both sides, to your left and right, are closed doors. ",
       "position": 1,
       "doors": [
         {
@@ -58,18 +38,14 @@
           "leadsTowards": "outside"
         },
         {
-          "riddles": [
-            {}
-          ],
-          "locked": true,
+          "riddles": [],
+          "locked": false,
           "direction": "a",
           "leadsTowards": "dining hall"
         },
         {
-          "riddles": [
-            {}
-          ],
-          "locked": true,
+          "riddles": [],
+          "locked": false,
           "direction": "d",
           "leadsTowards": "kitchen"
         },
@@ -90,18 +66,13 @@
           "name": "pipe",
           "usage": "smoke",
           "power": 0
-        },
-        {
-          "name": "gemstone",
-          "usage": "tiara",
-          "power": 0
         }
       ],
       "opponents": []
     },
     {
       "name": "dining hall",
-      "description": "",
+      "description": "A big room, with dark wooden walls with just as much paintings decorating them. \nThe long curtains in front of the big windows shield this room from the outside. \nThere is a piano in the left far corner. \nIn the middle of the Room is a big table, this room once was for dining.",
       "position": 2,
       "doors": [
         {
@@ -111,18 +82,25 @@
           "leadsTowards": "entrance"
         }
       ],
-      "itemsInRoom": [
+      "itemsInRoom": [],
+      "opponents": [
         {
-          "name": "gemstone",
-          "usage": "tiara",
-          "power": 0
+          "description": "A large black wolf-like creature, that moves in the shadows.",
+          "isFriendly": true,
+          "level": 2,
+          "isAlive": true,
+          "name": "amera",
+          "lives": 3,
+          "location": 2,
+          "inv": {
+            "itemsList": []
+          }
         }
-      ],
-      "opponents": []
+      ]
     },
     {
       "name": "kitchen",
-      "description": "",
+      "description": "This is the kitchen, or what is left of it. There are rats running everywhere, scared, in search for somewhere to hide. \nA big old stove is on the opposite side. Next to it a small door – it probably used to be the servants entrance. \nOld dusty pots and cooking pans are lying on the floor. ",
       "position": 3,
       "doors": [
         {
@@ -132,18 +110,12 @@
           "leadsTowards": "entrance"
         }
       ],
-      "itemsInRoom": [
-        {
-          "name": "gemstone",
-          "usage": "tiara",
-          "power": 0
-        }
-      ],
+      "itemsInRoom": [],
       "opponents": []
     },
     {
       "name": "upstairs",
-      "description": "",
+      "description": "This used to be a bedroom.",
       "position": 4,
       "doors": [
         {
@@ -158,6 +130,7 @@
         {
           "description": "A strong human looking monster. It has the tiara in its possesion.",
           "isFriendly": false,
+          "level": 1,
           "isAlive": true,
           "name": "sudagog",
           "lives": 4,
@@ -178,7 +151,7 @@
   "player": {
     "isAlive": true,
     "name": "one",
-    "lives": 3,
+    "lives": 4,
     "location": 0,
     "inv": {
       "itemsList": [
@@ -191,57 +164,75 @@
           "name": "ball",
           "usage": "befriend",
           "power": 0
+        },
+        {
+          "name": "gemstone",
+          "usage": "tiara",
+          "power": 0
+        },
+        {
+          "name": "potion",
+          "usage": "health",
+          "power": 1
+        },
+        {
+          "name": "gemstone",
+          "usage": "tiara",
+          "power": 0
+        },
+        {
+          "name": "gemstone",
+          "usage": "tiara",
+          "power": 0
         }
       ]
     }
   },
-  "instructions": "how to play",
+  "instructions": "Welcome to the 'Adventure of Lonewood Castle'!",
   "menu": {},
   "currentRoom": {
-    "name": "outside",
-    "description": "You are Standing in front of an old castle, a couple miles from the next village, on seemingly never ending grounds. Abandoned for a long time it is rising majestically in the dark, only lit by a little spark of moonlight. \n The night is cold and there are noises fom the wild everywhere. It almost seems as if they weren‘t from this world, so mysteriously and enchanting. Suddenly a big shadow runs past you and towards the nearby woods.",
-    "position": 0,
+    "name": "entrance",
+    "description": "The ceiling is high above your head, there are old Paintings all over the big walls. Some are damaged. \nThe settee in front of you looks old, but not worn off. The dust has settled everywhere. \nThere hasn’t been anyone in here for a very long time. \nIn the back of the room are two staircases leading up to the second floor. \n On both sides, to your left and right, are closed doors. ",
+    "position": 1,
     "doors": [
       {
-        "riddles": [
-          {}
-        ],
-        "locked": true,
+        "riddles": [],
+        "locked": false,
+        "direction": "s",
+        "leadsTowards": "outside"
+      },
+      {
+        "riddles": [],
+        "locked": false,
+        "direction": "a",
+        "leadsTowards": "dining hall"
+      },
+      {
+        "riddles": [],
+        "locked": false,
+        "direction": "d",
+        "leadsTowards": "kitchen"
+      },
+      {
+        "riddles": [],
+        "locked": false,
         "direction": "w",
-        "leadsTowards": "entrance"
+        "leadsTowards": "upstairs"
       }
     ],
     "itemsInRoom": [
       {
-        "name": "club",
+        "name": "sword",
         "usage": "fight",
-        "power": 1
+        "power": 2
       },
       {
-        "name": "ball",
-        "usage": "befriend",
+        "name": "pipe",
+        "usage": "smoke",
         "power": 0
       }
     ],
-    "opponents": [
-      {
-        "description": "A large black wolf-like creature, that moves in the shadows.",
-        "isFriendly": true,
-        "isAlive": true,
-        "name": "amera",
-        "lives": 3,
-        "location": 0,
-        "inv": {
-          "itemsList": [
-            {
-              "name": "potion",
-              "usage": "health",
-              "power": 1
-            }
-          ]
-        }
-      }
-    ]
+    "opponents": []
   },
   "gameOver": false,
   "won": false

@@ -6,11 +6,13 @@
         "itemsList":[
             {
             "name": "matches",
-            "usage": "fire" 
+            "usage": "fire",
+            "power": 0
             }, 
             {
                 "name": "ball", 
-                "usage": "befriend"
+                "usage": "befriend",
+                "power": 0
             }
         ]
     }   

@@ -6,8 +6,8 @@ namespace Quiz{
     class QuizElement
     {
 
-        protected string instructions = "Please enter your choice below";
-        protected string question;
+        string instructions = "Please enter your choice below";
+        public string question;
         protected string MsgWrongInput = "Sorry, something went wrong! The input might have been wrong.";
        
 

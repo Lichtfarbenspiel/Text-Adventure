@@ -1,216 +1,248 @@
 {
-    "game":{
-        "rooms":[
-            {
-                "name": "outside",
-                "description": "You are Standing in front of an old castle, a couple miles from the next village, on seemingly never ending grounds. Abandoned for a long time it is rising majestically in the dark, only lit by a little spark of moonlight. \n The night is cold and there are noises fom the wild everywhere. It almost seems as if they weren‘t from this world, so mysteriously and enchanting. Suddenly a big shadow runs past you and towards the nearby woods.",
-                "position": 0,
-                "doors":[
-                    {
-                        "riddles":[
-                            {
-                                "question": "where can you go whithout accually being there?",
-                                "answer":{
-                                    "text": "dream",
-                                    "isTrue": true
-                                }
-                            }
-                        ], 
-                        "locked": true,
-                        "direction": "w",
-                        "leadsTowards": "entrance"
-                    }
-                ],
-                "itemsInRoom":[
-                        {
-                            "name": "club",
-                            "usage": "fight" 
-                        }, 
-                        {
-                            "name": "ball", 
-                            "usage": "befriend"
-                        }
-                ],
-                "characters":[
-                    {
-                        "name": "amera",
-                        "lives": 3,
-                        "location": 0,
-                        "description": "A large black wolf-like creature, that moves in the shadows.",
-                        "isFriendly": true,
-                        "inv":{
-                            "itemsList":[
-                                {
-                                   "name": "potion",
-                                   "usage": "health",
-                                   "power": 0
-                                }
-                            ]
-                        }
-                    }
-                ]
-            },
-            {
-                "name": "entrance",
-                "description": "The ceiling is high above your head, there are old Paintings all over the big walls. Some are damaged. \n The settee in front of you looks old, but not worn off an there is settled dust everywhere. There hasn’t been anyone in here for a very long time. In the back of the room are two staircases leading up to the second floor. \n On both sides, to your left and right, are closed doors. ",
-                "position": 1,
-                "doors":[
-                    {
-                        "riddles":[], 
-                        "locked": false,
-                        "direction": "s",
-                        "leadsTowards": "outside"
-                    }, 
-                    {
-                        "riddles":[
-                            {
-                                "question": "What has many keys, but can't even open a single door?",
-                                "answer":{
-                                    "text": "piano",
-                                    "isTrue": true
-                                }
-                            }
-                        ], 
-                        "locked": true,
-                        "direction": "a",
-                        "leadsTowards": "dining hall"
-                    }, 
-                    {
-                        "riddles":[
-                            {
-                                "question": "What is more useful when it is broken?",
-                                "answer":{
-                                    "text": "egg",
-                                    "isTrue": true
-                                } 
-                            }
-                        ], 
-                        "locked": true,
-                        "direction": "d",
-                        "leadsTowards": "kitchen"
-                    }, 
-                    {
-                        "riddles":[], 
-                        "locked": false,
-                        "direction": "w",
-                        "leadsTowards": "upstairs"
-                    }
-                ],
-                "itemsInRoom":[
-                        {
-                            "name": "sword",
-                            "usage": "fight",
-                            "power": 2
-                        }, 
-                        {
-                            "name": "pipe", 
-                            "usage": "smoke",
-                            "power": 0
-                        },
-                        {
-                            "name": "gemstone", 
-                            "usage": "treasure",
-                            "power": 0
-                        }
-                ],
-                "characters":[]
-            },
-            {
-                "name": "dining hall",
-                "description": "",
-                "position": 2,
-                "doors":[
-                    {
-                        "riddles":[], 
-                        "locked": false,
-                        "direction": "d",
-                        "leadsTowards": "entrance"
-                    }
-                ],
-                "itemsInRoom":[
-                        {
-                            "name": "gemstone",
-                            "usage": "treasure",
-                            "power": 0
-                        }
-                ],
-                "characters":[]
-            },
-            {
-                "name": "kitchen",
-                "description": "",
-                "position": 3,
-                "doors":[
-                    {
-                        "riddles":[], 
-                        "locked": false,
-                        "direction": "a",
-                        "leadsTowards": "entrance"
-                    }
-                ],
-                "itemsInRoom":[
-                        {
-                            "name": "gemstone",
-                            "usage": "treasure",
-                            "power": 0
-                        }
-                ],
-                "characters":[]
-            },
-            {
-                "name": "upstairs",
-                "description": "",
-                "position": 4,
-                "doors":[
-                    {
-                        "riddles":[
-                            
-                        ], 
-                        "locked": false,
-                        "direction": "w",
-                        "leadsTowards": "entrance"
-                    }
-                ],
-                "itemsInRoom":[],
-                "characters":[
-                    {
-                        "name": "sudagog",
-                        "lives": 4,
-                        "location": 4,
-                        "description": "A strong human looking monster. It has the tiara in its possesion.",
-                        "isFriendly": false,
-                        "inv":{
-                            "itemsList":[
-                                {
-                                   "name": "tiara",
-                                   "usage": "win",
-                                   "power": 0
-                                }
-                            ]
-                        }
-                    }
-                ]
-            }
+    "rooms": [
+      {
+        "name": "outside",
+        "description": "You are Standing in front of an old castle, a couple miles from the next village,\non seemingly never ending grounds. \nAbandoned for a long time it is rising majestically in the dark, only lit by the faintly glow of moonlight. \nThe night is cold and there are noises fom the wild everywhere. \nIt almost seems as if they weren‘t from this world, so mysteriously and enchanting. \nSuddenly a big shadow runs past you and towards the nearby woods.",
+        "position": 0,
+        "doors": [
+          {
+            "riddles": [
+              {
+                "answer": {
+                  "text": "dream",
+                  "isTrue": true
+                },
+                "question": "where can you go whithout accually being there?"
+              }
+            ],
+            "locked": true,
+            "direction": "w",
+            "leadsTowards": "entrance"
+          }
         ],
-        "player":{
-            "name": "one",
+        "itemsInRoom": [
+          {
+            "name": "club",
+            "usage": "fight",
+            "power": 1
+          },
+          {
+            "name": "ball",
+            "usage": "befriend",
+            "power": 0
+          }
+        ],
+        "opponents": [
+          {
+            "description": "A large black wolf-like creature, that moves in the shadows.",
+            "isFriendly": true,
+            "level": 2,
+            "isAlive": true,
+            "name": "amera",
             "lives": 3,
             "location": 0,
-            "inv":{
-                "itemsList":[
+            "inv": {
+              "itemsList": [
+                {
+                  "name": "potion",
+                  "usage": "health",
+                  "power": 1
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "entrance",
+        "description": "The ceiling is high above your head, there are old Paintings all over the big walls. Some are damaged. \nThe settee in front of you looks old, but not worn off. The dust has settled everywhere. \nThere hasn’t been anyone in here for a very long time. \nIn the back of the room are two staircases leading up to the second floor. \nOn both sides, to your left and right, are closed doors. ",
+        "position": 1,
+        "doors": [
+          {
+            "riddles": [
+               
+            ],
+            "locked": false,
+            "direction": "s",
+            "leadsTowards": "outside"
+          },
+          {
+            "riddles": [
+              {
+                "answer": {
+                  "text": "piano",
+                  "isTrue": true
+                },
+                "question": "What has many keys, but can't even open a single door?"
+              }
+            ],
+            "locked": true,
+            "direction": "a",
+            "leadsTowards": "dining hall"
+          },
+          {
+            "riddles": [
+              {
+                "answer": {
+                  "text": "egg",
+                  "isTrue": true
+                },
+                "question": "What is more useful when it is broken?"
+              }
+            ],
+            "locked": true,
+            "direction": "d",
+            "leadsTowards": "kitchen"
+          },
+          {
+            "riddles": [ 
+                {
+                    "answer": {
+                      "text": "dice",
+                      "isTrue": true
+                    },
+                    "question": "What has six faces and 21 eyes?"
+                }
+            ],
+            "locked": true,
+            "direction": "w",
+            "leadsTowards": "upstairs"
+          }
+        ],
+        "itemsInRoom": [
+          {
+            "name": "sword",
+            "usage": "fight",
+            "power": 2
+          },
+          {
+            "name": "pipe",
+            "usage": "smoke",
+            "power": 0
+          },
+          {
+            "name": "gemstone",
+            "usage": "tiara",
+            "power": 0
+          }
+        ],
+        "opponents": []
+      },
+      {
+        "name": "dining hall",
+        "description": "A big room, with dark wooden walls with just as much paintings decorating them. \nThe long curtains in front of the big windows shield this room from the outside. \nThere is a piano in the left far corner. \nIn the middle of the Room is a big table, this room once was for dining.",
+        "position": 2,
+        "doors": [
+          {
+            "riddles": [],
+            "locked": false,
+            "direction": "d",
+            "leadsTowards": "entrance"
+          }
+        ],
+        "itemsInRoom": [
+          {
+            "name": "gemstone",
+            "usage": "tiara",
+            "power": 0
+          }
+        ],
+        "opponents": [
+            {
+                "description": "A little goblin, who has made himself a home in this room. \nHe likes to be on his own and prefers the dark over daylight.",
+                "isFriendly": true,
+                "level": 1,
+                "isAlive": true,
+                "name": "neki",
+                "lives": 2,
+                "location": 2,
+                "inv": {
+                  "itemsList": [
                     {
-                       "name": "matches",
-                       "usage": "fire" 
-                    }, 
-                    {
-                        "name": "ball", 
-                        "usage": "befriend"
+                      "name": "potion",
+                      "usage": "health",
+                      "power": 1
                     }
-                ]
-            },  
-            "commands":[
-            ]
-        },
-        "instructions": "TO DO"
-    }
+                  ]
+                }
+            }
+        ]
+      },
+      {
+        "name": "kitchen",
+        "description": "This is the kitchen, or what is left of it. There are rats running everywhere, scared, in search for somewhere to hide. \nA big old stove is on the opposite side. Next to it a small door – it probably used to be the servants entrance. \nOld dusty pots and cooking pans are lying on the floor. ",
+        "position": 3,
+        "doors": [
+          {
+            "riddles": [],
+            "locked": false,
+            "direction": "a",
+            "leadsTowards": "entrance"
+          }
+        ],
+        "itemsInRoom": [
+          {
+            "name": "gemstone",
+            "usage": "tiara",
+            "power": 0
+          }
+        ],
+        "opponents": []
+      },
+      {
+        "name": "upstairs",
+        "description": "This used to be a bedroom.",
+        "position": 4,
+        "doors": [
+          {
+            "riddles": [],
+            "locked": false,
+            "direction": "s",
+            "leadsTowards": "entrance"
+          }
+        ],
+        "itemsInRoom": [],
+        "opponents": [
+          {
+            "description": "A strong monster that has the ability to appear in human form. It has a tiara in its possesion.",
+            "isFriendly": false,
+            "level": 1,
+            "isAlive": true,
+            "name": "sudagog",
+            "lives": 4,
+            "location": 4,
+            "inv": {
+              "itemsList": [
+                {
+                  "name": "tiara",
+                  "usage": "win",
+                  "power": 0
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "player": {
+      "isAlive": true,
+      "name": "one",
+      "lives": 3,
+      "location": 0,
+      "inv": {
+        "itemsList": [
+          {
+            "name": "matches",
+            "usage": "fire",
+            "power": 0
+          },
+          {
+            "name": "ball",
+            "usage": "befriend",
+            "power": 0
+          }
+        ]
+      }
+    },
+    "instructions": "Welcome to the 'Adventure of Lonewood Castle'!"
 }

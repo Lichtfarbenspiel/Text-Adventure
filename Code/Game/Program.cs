@@ -13,43 +13,43 @@ namespace Text_Adventure
         static Player player;
         static string PathRooms = "json/Rooms.json";
         static string PathPlayer = "json/Player.json";
-        static string instructions = "how to play";
+        static string instructions = "Welcome to the 'Adventure of Lonewood Castle'!";
         
        
         static void Main(string[] args)
         {
             Program p = new Program();
-
-            LoadGame();
+            game = LoadGame();
+            game.StartGame();
                 
         }
 
-        static void LoadGame(){
-
-           using (StreamReader r = new StreamReader(PathRooms))
-            {
-                string json = r.ReadToEnd();
-                rooms = JsonConvert.DeserializeObject<List<Room>>(json);
+        static Game LoadGame(){
+            string filePath = ""; 
+            WriteLine("Would you like to play a new game or load a saved game? \nEnter 'new' to play a new game \nEnter 'load' to load a previously saved game");
+            Write(">");
+            string input = Console.ReadLine().ToLower();
+            switch(input){
+                case "new":
+                    filePath = "json/Game.json";
+                    break;
+                case "load":
+                    filePath = "json/Saves/save.json";
+                    break;
+                case "quit":
+                    Environment.Exit(0);
+                    break;
+                default: 
+                    WriteLine("Wrong input, please try again!");
+                    System.Threading.Thread.Sleep(1000);
+                    Console.Clear();
+                    LoadGame();
+                    break;
             }
 
-            using (StreamReader r = new StreamReader(PathPlayer))
-            {
-                string json = r.ReadToEnd();
-                player = JsonConvert.DeserializeObject<Player>(json);
-            }
-            WriteLine(player);
-            game = new Game(rooms, player, instructions);
-            game.StartGame();
-        }
-
-        
-
-        void Resume(){
-            game.currentRoom.Display();
-        }
-
-        void Quit(){
-            Environment.Exit(0);
+            string json = File.ReadAllText(filePath);
+            Game game = JsonConvert.DeserializeObject<Game>(json);
+            return game;            
         }
     }
 }

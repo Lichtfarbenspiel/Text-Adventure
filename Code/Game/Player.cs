@@ -32,10 +32,10 @@ class Player : Character{
         WriteLine("Your inventory holds:");
         foreach (Item item in inv.itemsList)
         {
-            WriteLine(item.name);
+            WriteLine("- " + item.name);
         }
         WriteLine("\n");
-        WriteLine("Your Health:" + lives + " health points");
+        WriteLine("Your Health: " + lives + " health points");
     }
 
     public Opponent Attack(Opponent opponent){
@@ -46,38 +46,40 @@ class Player : Character{
 
         Random r = new Random();
 
-        if(this.lives == 3){
-            damageMax = 0.6f;
-            damageMin = 0.4f;
+        if(this.lives >= 3){
+            damageMax = 0.7f;
+            damageMin = 0.5f;
             
             double damage = r.NextDouble() * (damageMin - damageMax) + damageMin;
             opponent.lives -= (int)(opponent.lives * damage);
         }
-        if(this.lives == 2){
+        else if(this.lives == 2){
             damageMax = 0.5f;
+            damageMin = 0.4f;
+
+            double damage = r.NextDouble() * (damageMin - damageMax) + damageMin;
+            opponent.lives -= (int)(opponent.lives * damage);
+        }
+        else if(this.lives == 1){
+            damageMax = 0.4f;
             damageMin = 0.3f;
 
             double damage = r.NextDouble() * (damageMin - damageMax) + damageMin;
             opponent.lives -= (int)(opponent.lives * damage);
         }
-        if(this.lives == 1){
-            damageMax = 0.4f;
-            damageMin = 0.2f;
-
-            double damage = r.NextDouble() * (damageMin - damageMax) + damageMin;
-            opponent.lives -= (int)(opponent.lives * damage);
-        }
-        if(opponent.lives == 0){
+        else if(opponent.lives == 0){
             opponent.isAlive = false;
+            WriteLine("You killed " + opponent.name);
             
         }
-        WriteLine("Opponent's lives left: " + this.lives);
+        WriteLine("Opponent's lives left: " + opponent.lives);
+        
         opponent.Attack(this);
         return opponent;
     }
 
     public override void Interact(Character opponent){
-        WriteLine("What would you like to say to" + opponent.name + "? ");
+        WriteLine("What would you like to say to " + opponent.name.ToUpper() + "? ");
         Write(">");
         string input = Console.ReadLine();
         opponent.Interact(this);
@@ -88,6 +90,7 @@ class Player : Character{
             if(input == item.name){
                 if(item.power >= 1){
                     this.lives += item.power;
+                    WriteLine("You have now " + this.lives + " Health Points.");
                 }
                 switch(item.usage){
                     case "fire":

@@ -9,7 +9,7 @@ class Game
 {
     public List<Room> rooms;
     public Player player;
-    public String instructions = "Welcome to the 'Adventure of Lonewood Castle'!";
+    public String instructions;
     public Menu menu = new Menu();
     public Room currentRoom;
     Opponent thisOpponent;
@@ -21,10 +21,11 @@ class Game
         
     
 
-    public Game(List<Room> rooms, Player player)
+    public Game(List<Room> rooms, Player player, String instructions)
     {
         this.rooms = rooms;
         this.player = player;
+        this.instructions = instructions;
     }
 
     public void StartGame(){
@@ -39,12 +40,14 @@ class Game
             WriteLine("Loading...");
             currentRoom = this.rooms[0];
             System.Threading.Thread.Sleep(1000);
+            Console.Clear();
             currentRoom.Display();
             PlayGame();
         }
         else{
             WriteLine("Error! Input incorrect, please try again.");
             System.Threading.Thread.Sleep(5000);
+            Console.Clear();
             StartGame();
         }
     }
@@ -118,6 +121,7 @@ class Game
             WriteLine("Game Over!");
         }
     }
+
     void PickItem(String input){
     
         if(currentRoom.itemsInRoom.Count == 0){
@@ -161,7 +165,8 @@ class Game
                 }
             }
         }  
-    }    
+    }
+
     void Fight(String input){
 
         if(currentRoom.opponents.Count == 0){
@@ -171,7 +176,7 @@ class Game
             foreach(Opponent op in currentRoom.opponents){
                 if(op.name == input){
                     thisOpponent = op;
-                    player.Attack(thisOpponent);
+                    thisOpponent = player.Attack(thisOpponent);
                 }
             }
             if(!thisOpponent.isAlive){
@@ -187,13 +192,16 @@ class Game
     void ChangeRoom(String input){
         bool pass = false;
 
+
         foreach(Door d in currentRoom.doors){
             if(input == d.direction && d.locked){
                 thisDoor = d;
                 pass = thisDoor.Riddle();
+
             }
             else if(input == d.direction && !d.locked){
                 thisDoor = d;
+                d.locked = false;
                 pass = true;
             }
         }
@@ -203,20 +211,28 @@ class Game
                     currentRoom = r;
                 }
             }
+            OpponentChangeRoom();
             currentRoom.Display();
+            pass = false;
         }
     }
 
     void OpponentChangeRoom(){
-        if(currentRoom.opponents.Count >= 0){
-            Random r = new Random();
-            int location = r.Next(0, rooms.Count);
-            
-            thisOpponent = currentRoom.opponents[0];
-            Room thisRoom = rooms[location]; 
-            thisRoom.opponents.Add(thisOpponent);
-            thisOpponent.location = location;
-        }
+        Random r = new Random();
+        int location = r.Next(0, rooms.Count-1);
+
+        for(int i = 0; i <= this.rooms.Count -1; i++){
+            for(int j = 0; j <= this.rooms[i].opponents.Count -1; j++){
+                
+                var character = this.rooms[i].opponents[j];
+                if(character.level >= 2){
+                    this.rooms[location].opponents.Add(character);
+
+                    this.rooms[i].opponents.Remove(character);
+                    character.location = location;
+                }
+            }
+        }            
     }
 
     void ShowCommands(){

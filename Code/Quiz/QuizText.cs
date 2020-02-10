@@ -7,7 +7,7 @@ namespace Quiz
     class QuizText : QuizElement
     {
 
-        Answer answer;
+        public Answer answer;
         new string instructions = "Please enter the correct word below. Mind the correct spelling.";
 
         public QuizText(string question, Answer answer) : base(question)
