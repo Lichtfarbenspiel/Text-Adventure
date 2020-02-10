@@ -23,7 +23,7 @@
         "itemsInRoom": [
           {
             "name": "club",
-            "usage": "fight",
+            "usage": "strength",
             "power": 1
           },
           {
@@ -112,13 +112,13 @@
         "itemsInRoom": [
           {
             "name": "sword",
-            "usage": "fight",
+            "usage": "strength",
             "power": 2
           },
           {
             "name": "pipe",
-            "usage": "smoke",
-            "power": 0
+            "usage": "weakness",
+            "power": 1
           },
           {
             "name": "gemstone",
@@ -228,6 +228,7 @@
       "isAlive": true,
       "name": "one",
       "lives": 3,
+      "level": 1,
       "location": 0,
       "inv": {
         "itemsList": [

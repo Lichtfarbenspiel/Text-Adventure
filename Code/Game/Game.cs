@@ -101,7 +101,7 @@ class Game
                 case "attack":
                     this.Fight(input[1]);
                     break;
-                case "adress":
+                case "address":
                     this.SpeakTo(input[1]);
                     break;
                 case "w":  
@@ -235,7 +235,7 @@ class Game
     }
 
     void ShowCommands(){
-        WriteLine("commands (c): show Commands \n move forward (w), move backward (s), move left (a), move right (d)\n look (l)\n show inventory (i)\n take (t) <item>\n drop <item>\n use (u) <item>\n attack <character name>\n adress <character name>\n save game\n quit (q)");
+        WriteLine("commands (c): show Commands \n move forward (w), move backward (s), move left (a), move right (d)\n look (l)\n show inventory (i)\n take (t) <item>\n drop <item>\n use (u) <item>\n attack <character name>\n address <character name>\n save game\n quit (q)");
     }
 
     void GameOver(){

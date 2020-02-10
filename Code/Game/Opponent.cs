@@ -6,18 +6,18 @@ class Opponent : Character
 {
     public string description; 
     public bool isFriendly = true;
-    public int level;
     //public List<String> interactions;
+    public int level;
    
 
-    public Opponent(string name, int lives, int location, string description, bool isFriendly, int level, Inventory inv) : base(name, lives, location, inv)
+    public Opponent(string name, int lives, int location, int level, string description, bool isFriendly, Inventory inv) : base(name, lives, location, inv)
     {
         this.name = name;          
         this.lives = lives;
         this.location = location;
+        this.level = level;
         this.description = description;
         this.isFriendly = isFriendly;
-        this.level = level;
         this.inv = inv;
     }
 
@@ -28,32 +28,32 @@ class Opponent : Character
         WriteLine("You are being attacked by " + this.name + "...");
 
         Random r = new Random();
+            if(this.level >= 3){
+                damageMax = 0.6f;
+                damageMin = 0.4f;
 
-        if(this.lives >= 1){
-            damageMax = 0.7f;
-            damageMin = 0.3f;
+                double damage = r.NextDouble() * (damageMax - damageMin) + damageMin;
+                player.lives -= (int)(lives * damage);
+            }
+            if(this.level == 2){
+                damageMax = 0.4f;
+                damageMin = 0.2f;
 
-            double damage = r.NextDouble() * (damageMin - damageMax) + damageMin;
-            player.lives -= (int)(player.lives * damage);
-        }
-        // if(this.lives == 2){
-        //     damageMax = 0.6f;
-        //     damageMin = 0.4f;
-
-        //     double damage = r.NextDouble() * (damageMin - damageMax) + damageMin;
-        //     player.lives -= (int)(player.lives * damage);
-        // }
-        // if(this.lives == 1){
-        //     damageMax = 0.5f;
-        //     damageMin = 0.3f;
-            
-        //     double damage = r.NextDouble() * (damageMin - damageMax) + damageMin;
-        //     player.lives -= (int)(player.lives * damage);
-        // }
-        else if(player.lives == 0){
-            player.isAlive = false;
-        }
-        WriteLine("Lives left: " + player.lives);
+                double damage = r.NextDouble() * (damageMax - damageMin) + damageMin;
+                player.lives -= (int)(lives * damage);
+            }
+            if(this.level == 1){
+                damageMax = 0.2f;
+                damageMin = 0.0f;
+                
+                
+                double damage = r.NextDouble() * (damageMax - damageMin) + damageMin;
+                player.lives -= (int)(lives * damage);
+            }
+            if(player.lives <= 0){
+                player.isAlive = false;
+            }
+            WriteLine("Lives left: " + player.lives);            
         return player;
     }
 
@@ -76,6 +76,7 @@ class Opponent : Character
                     this.DropItem(item);
                     WriteLine("My friend, please take this " + item.name);
                     player.TakeItem(item);
+                    this.inv.RemoveItem(item);
                 }
             }
         }
