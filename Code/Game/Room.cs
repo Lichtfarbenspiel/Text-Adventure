@@ -47,31 +47,24 @@ class Room{
 
     public void Enter(Door d, Game game){
         
-        bool riddleSolved = false;
-
-        for(int i = 0; i < game.rooms.Count; i++){
-            if(game.rooms[i].name == d.leadsTowards){
-                nextRoom = game.rooms[i];
-            }
-            else{
-                nextRoom = null;
-                WriteLine("Unknown command, please try Again!");
-                break;
-            }
-        }
-
-        if(!d.locked){
-            nextRoom.Display();
-        }
-        else{
-            riddleSolved = d.Riddle();
-            if(!riddleSolved){
-                WriteLine("You shall not pass until you solve the riddle!");
-                this.Display();
-            }
-            else{
-                nextRoom.Display();
-            }
-        }
+        // for(int i = 0; i < game.rooms.Count; i++){
+        //     if(game.rooms[i].name == d.leadsTowards && !d.locked){
+        //         nextRoom = game.rooms[i];
+        //         nextRoom.Display();
+        //     }
+        //     else if(game.rooms[i].name == d.leadsTowards && d.locked){
+        //         riddleSolved = d.Riddle();
+        //         if(!riddleSolved){
+        //             WriteLine("You shall not pass until you solve the riddle!");
+        //             this.Display();
+        //         }
+        //         else game.currentRoom.Display();
+        //     }
+        //     else{
+        //         nextRoom = null;
+        //         WriteLine("Unknown command, please try Again!");
+        //         game.currentRoom.Display();
+        //     }
+        // }
     }
 }

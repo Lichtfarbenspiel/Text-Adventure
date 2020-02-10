@@ -26,20 +26,20 @@ class Door{
         Random rnd = new Random();
         int number  = rnd.Next(0, riddles.Count);
         
-        QuizElement thisRiddle = riddles.ElementAt(number);
+        QuizElement thisRiddle = riddles.ElementAt(0);
+        WriteLine("To pass you first have to solve a riddle.");
         thisRiddle.Display();
         Write(">");
         string userInput = ReadLine();
 
         bool check = thisRiddle.CheckAnswer(userInput);
         if(!check){
-            riddles.Remove(riddles.ElementAt(number));
             return false;
         }
         else{
             riddles.Remove(riddles.ElementAt(number));
+            this.locked = false;
             return true;
         }
-        
     }
 }

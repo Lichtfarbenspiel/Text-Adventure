@@ -12,21 +12,6 @@ public class Inventory{
         this.itemsList = itemsList;
     }
 
-    public void Display(){
-        StringBuilder sb = new StringBuilder();
-        bool isFirst = true;
-
-        foreach (Item item in itemsList)
-        {
-            if(isFirst){
-                sb.Append(item.name);
-            }
-            else
-                sb.Append(", " + item.name);
-        }
-        WriteLine(sb.ToString());
-    }
-
     public void AddItem(Item item){
         itemsList.Add(item);
     }

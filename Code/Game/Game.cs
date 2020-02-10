@@ -13,8 +13,8 @@ class Game
     Item thisItem;
     Door thisDoor;
     String wrongCommand = "Unknown command, please try Again!";
-    bool gameOver = false;
-    bool won = false;
+    public bool gameOver = false;
+    public bool won = false;
         
     
 
@@ -37,40 +37,46 @@ class Game
             WriteLine("Loading...");
             currentRoom = this.rooms[0];
             System.Threading.Thread.Sleep(1000);
+            currentRoom.Display();
             PlayGame();
         }
         else{
             WriteLine("Error! Input incorrect, please try again.");
+            System.Threading.Thread.Sleep(5000);
             StartGame();
         }
     }
 
     public void PlayGame(){
-        if(!gameOver && !won){
-            Console.Clear();
-            
-            currentRoom.Display();
+
+        if(!gameOver){
+
             WriteLine("\n");
             WriteLine("Make a move!");
             Write(">");
-            string userInput = Console.ReadLine().ToLower();
+            
+            string userInput = Console.ReadLine();
+            userInput = userInput.ToLower();
             string[] input = userInput.Split(" ");
             List<Opponent> opponents = currentRoom.opponents;
+            
+            Console.Clear();
 
             switch(input[0]){
                 case "m": 
                     menu.Display(); 
                     break;
                 case "c": 
-                    player.ShowCommands(); 
+                    this.ShowCommands(); 
                     break;
                 case "l":
                     currentRoom.Display(); 
                     break;
                 case "i": 
-                    player.inv.Display(); 
+                    player.DisplayInventory(); 
                     break;
-                case "take": 
+                case "take":
+                case "t": 
                     this.PickItem(input[1]);
                     break;
                 case "drop": 
@@ -83,31 +89,35 @@ class Game
                 case "a": 
                 case "s": 
                 case "d": 
-                    this.Move(input[0]);
+                    this.ChangeRoom(input[0]);
                     break;
             }
+            this.PlayGame();
+        }
+        else{
+            WriteLine("Game Over!");
         }
     }
     void PickItem(String input){
-        int amount = currentRoom.itemsInRoom.Count;
-
-        if(amount > 0){
-            for(int i = 0; i < amount; i++){
-                thisItem = currentRoom.itemsInRoom[i];
-
-                if(String.Equals(thisItem.name, input)){
-                    currentRoom.itemsInRoom.Remove(thisItem);
-                    player.TakeItem(thisItem);
-                } 
-                else{
-                    WriteLine(wrongCommand);
-                    System.Threading.Thread.Sleep(5000);
-                    currentRoom.Display();
-                }
-            }
+    
+        if(currentRoom.itemsInRoom.Count == 0){
+            WriteLine("There are no items to take.");
+            currentRoom.Display();
         }
         else{
-            WriteLine("There are no items to take.");
+            for(int i = 0; i < currentRoom.itemsInRoom.Count; i++){
+            
+                if(currentRoom.itemsInRoom[i].name != input){
+                    WriteLine(wrongCommand);
+                    System.Threading.Thread.Sleep(2000);
+                    currentRoom.Display();
+                } 
+                else{
+                    thisItem = currentRoom.itemsInRoom[i];
+                    player.TakeItem(thisItem);
+                    currentRoom.itemsInRoom.Remove(thisItem);
+                }
+            }
         }
     }
 
@@ -128,7 +138,7 @@ class Game
                 currentRoom.Display();
             }
         }  
-    }
+    }    
     void Fight(String input){
         int amount = currentRoom.opponents.Count;
         if(amount > 0){
@@ -147,15 +157,30 @@ class Game
         }
     }
 
-    void Move(String input){
-        for(int i = 0; i < currentRoom.doors.Count; i ++){
-            thisDoor = currentRoom.doors[i];
-            if(String.Equals(thisDoor.direction, input)){
-                currentRoom.Enter(thisDoor, this);
+    void ChangeRoom(String input){
+        bool pass = false;
+
+        foreach(Door d in currentRoom.doors){
+            if(input == d.direction && d.locked){
+                thisDoor = d;
+                pass = thisDoor.Riddle();
             }
-            else{
-                WriteLine("You can not go in this direction! Please try again.");
+            else if(input == d.direction && !d.locked){
+                thisDoor = d;
+                pass = true;
             }
         }
+        if(pass){
+            foreach(Room r in rooms){
+                if(thisDoor.leadsTowards == r.name){
+                    currentRoom = r;
+                }
+            }
+            currentRoom.Display();
+        }
+    }
+
+    void ShowCommands(){
+        WriteLine("commands (c): show Commands \n move forward(w), move backward (s), move left (a), move right (d)\n look (l)\n show inventory (i)\n take (t item) <item>\n drop (d item) <item>\n attack (a name) <character>.\n save (save) game\n quit (q)");
     }
 }

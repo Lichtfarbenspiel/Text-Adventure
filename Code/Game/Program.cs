@@ -14,8 +14,6 @@ namespace Text_Adventure
         static string PathRooms = "json/Rooms.json";
         static string PathPlayer = "json/Player.json";
         static string instructions = "how to play";
-        public bool gameOver = false;
-        public bool won = false;
         
        
         static void Main(string[] args)
@@ -23,6 +21,7 @@ namespace Text_Adventure
             Program p = new Program();
 
             LoadGame();
+                
         }
 
         static void LoadGame(){

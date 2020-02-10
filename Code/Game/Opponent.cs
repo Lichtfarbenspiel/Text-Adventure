@@ -32,24 +32,24 @@ class Opponent : Character
 
         Random r = new Random();
 
-        if(this.lives >= 3){
-            damageMax = 0.6f;
-            damageMin = 0.4f;
+        if(player.lives >= 3){
+            damageMax = 0.2f;
+            damageMin = 0.0f;
 
             double damage = r.NextDouble() * (damageMin - damageMax) + damageMin;
             player.lives -= (int)(lives * damage);
         }
-        if(this.lives == 2){
+        if(player.lives == 2){
             damageMax = 0.4f;
             damageMin = 0.2f;
 
             double damage = r.NextDouble() * (damageMin - damageMax) + damageMin;
             player.lives -= (int)(lives * damage);
         }
-        if(this.lives == 1){
-            damageMax = 0.2f;
-            damageMin = 0.0f;
-
+        if(player.lives == 1){
+            damageMax = 0.6f;
+            damageMin = 0.4f;
+            
             double damage = r.NextDouble() * (damageMin - damageMax) + damageMin;
             player.lives -= (int)(lives * damage);
         }

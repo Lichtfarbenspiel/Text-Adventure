@@ -16,6 +16,7 @@ class Player : Character{
     }
     public override void TakeItem(Item item){
             inv.AddItem(item); 
+            WriteLine(item + " has been added to your inventory");
     }
     public override void DropItem(Item item){
         if(inv.itemsList.Count > 0){
@@ -26,11 +27,21 @@ class Player : Character{
         }
     }
 
+    public void DisplayInventory(){
+        WriteLine("Your inventory holds:");
+        foreach (Item item in inv.itemsList)
+        {
+            WriteLine(item.name);
+        }
+        WriteLine("\n");
+        WriteLine("Your Health:" + lives + " health points");
+    }
+
     void move(Room r){
 
     }
 
-    public override Character Attack(Character opponent){
+    public Opponent Attack(Opponent opponent){
         double damageMax;
         double damageMin;
 
@@ -38,23 +49,23 @@ class Player : Character{
 
         Random r = new Random();
 
-        if(this.lives >= 3){
-            damageMax = 0.6f;
-            damageMin = 0.4f;
-
+        if(opponent.lives == 3){
+            damageMax = 0.2f;
+            damageMin = 0.0f;
+            
             double damage = r.NextDouble() * (damageMin - damageMax) + damageMin;
             opponent.lives -= (int)(lives * damage);
         }
-        if(this.lives == 2){
+        if(opponent.lives == 2){
             damageMax = 0.4f;
             damageMin = 0.2f;
 
             double damage = r.NextDouble() * (damageMin - damageMax) + damageMin;
             opponent.lives -= (int)(lives * damage);
         }
-        if(this.lives == 1){
-            damageMax = 0.2f;
-            damageMin = 0.0f;
+        if(opponent.lives == 1){
+            damageMax = 0.6f;
+            damageMin = 0.4f;
 
             double damage = r.NextDouble() * (damageMin - damageMax) + damageMin;
             opponent.lives -= (int)(lives * damage);
@@ -74,8 +85,5 @@ class Player : Character{
 
     }
 
-    public void ShowCommands(){
-        WriteLine("commands (c): show Commands \n move forward(w), move backward (s), move left (a), move right (d)\n look (l)\n show inventory (i)\n take (t item) <item>\n drop (d item) <item>\n attack (a name) <character>.\n save (save) game\n quit (q)");
-    }
 
 }
