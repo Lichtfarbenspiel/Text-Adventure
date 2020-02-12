@@ -20,26 +20,34 @@ namespace Text_Adventure
         }
 
         static Game LoadGame(){
-            string filePath = ""; 
-            WriteLine("Would you like to play a new game or load a saved game? \nEnter 'new' to play a new game \nEnter 'load' to load a previously saved game");
-            Write(">");
-            string input = Console.ReadLine().ToLower();
-            switch(input){
-                case "new":
-                    filePath = "json/Game.json";
-                    break;
-                case "load":
-                    filePath = "json/Saves/save.json";
-                    break;
-                case "quit":
-                    Environment.Exit(0);
-                    break;
-                default: 
-                    WriteLine("Wrong input, please try again!");
-                    System.Threading.Thread.Sleep(1000);
-                    Console.Clear();
-                    LoadGame();
-                    break;
+            string filePath = "";
+            string input;
+            bool inLoop = true;
+            while(inLoop)
+            {
+                WriteLine("Would you like to play a new game or load a saved game? \nEnter 'new' to play a new game \nEnter 'load' to load a previously saved game");
+                Write(">");
+                input = Console.ReadLine().ToLower();
+                switch (input)
+                {
+                    case "new":
+                        filePath = "bin/debug/netcoreapp3.1/Game.json";
+                        inLoop = false;
+                        break;
+                    case "load":
+                        filePath = "bin/debug/netcoreapp3.1/save.json";
+                        inLoop = false;
+                        break;
+                    case "quit":
+                        inLoop = false;
+                        Environment.Exit(0);
+                        break ;
+                    default:
+                        WriteLine("Wrong input, please try again!");
+                        System.Threading.Thread.Sleep(1000);
+                        Console.Clear();
+                        break;
+                }
             }
 
             string json = File.ReadAllText(filePath);
