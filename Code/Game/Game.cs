@@ -29,26 +29,32 @@ class Game
     }
 
     public void StartGame(){
-        Console.Clear();
-        WriteLine(this.instructions);
-        WriteLine("Type 'start' to play the game!");
-        Write(">");
-
-        string userInput = Console.ReadLine().ToLower();
-
-        if(String.Equals(userInput, "start")){
-            WriteLine("Loading...");
-            currentRoom = this.rooms[0];
-            System.Threading.Thread.Sleep(1000);
+        while (true)
+        {
             Console.Clear();
-            currentRoom.Display();
-            PlayGame();
-        }
-        else{
-            WriteLine("Error! Input incorrect, please try again.");
-            System.Threading.Thread.Sleep(5000);
-            Console.Clear();
-            StartGame();
+            WriteLine(this.instructions);
+            WriteLine("Type 'start' to play the game!");
+            Write(">");
+
+
+            string userInput = Console.ReadLine().ToLower();
+
+            if (String.Equals(userInput, "start"))
+            {
+                WriteLine("Loading...");
+                currentRoom = this.rooms[0];
+                System.Threading.Thread.Sleep(1000);
+                Console.Clear();
+                currentRoom.Display();
+                PlayGame();
+                return;
+            }
+            else
+            {
+                WriteLine("Error! Input incorrect, please try again.");
+                System.Threading.Thread.Sleep(5000);
+                Console.Clear();
+            }
         }
     }
 
@@ -96,7 +102,7 @@ class Game
                     break;
                 case "use":
                 case "u":
-                    player.UseItem(input[1]);
+                    WriteLine(player.UseItem(input[1]));
                     break;
                 case "attack":
                     this.Fight(input[1]);

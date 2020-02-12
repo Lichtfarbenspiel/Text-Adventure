@@ -90,28 +90,32 @@ class Player : Character{
         opponent.Interact(this);
     }
 
-    public void UseItem(String input){
+    public String UseItem(String input){
+        string output = "";
         foreach(Item item in this.inv.itemsList){
             if(input == item.name){
                 if(item.name == "potion"){
                     this.lives += item.power;
-                    WriteLine("You have now " + this.lives + " Health Points.");
+                    output = "You have now " + this.lives + " Health Points.";
                 }
                 switch(item.usage){
                     case "fire":
-                        WriteLine("'A fire has been lit'");
-                        break;
+                        output = "'A fire has been lit'";
+                        this.inv.RemoveItem(item);
+                        return output;
                     case "strength":
                         this.level += item.power;
-                        WriteLine("Your Level is now " + this.level);
-                        break;
+                        output = "Your Level is now " + this.level;
+                        this.inv.RemoveItem(item);
+                        return output;
                     case "weakness":
                         this.level -= item.power;
-                        WriteLine("Your Level is now " + this.level);
-                        break;
+                        output = "Your Level is now " + this.level;
+                        this.inv.RemoveItem(item);
+                        return output;
                 }
             }
-            
         }
+        return output;
     }
 }

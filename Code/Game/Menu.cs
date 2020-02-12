@@ -32,7 +32,7 @@ class Menu{
         WriteLine("Saving...");
         
         string jsonString = JsonConvert.SerializeObject(game, Formatting.Indented);
-        File.WriteAllText("json/Saves/save.json", jsonString);
+        File.WriteAllText("bin/debug/netcoreapp3.1/save.json", jsonString);
         System.Threading.Thread.Sleep(2000);       
     }
 }
